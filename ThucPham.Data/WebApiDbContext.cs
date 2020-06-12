@@ -37,6 +37,7 @@ namespace ThucPham.Data
         public DbSet<Feedback> Feedbacks { get; set; }
 
         public DbSet<Role> appRoles { get; set; }
+        //public DbSet<User> appUsers { get; set; }
 
 
         public static WebApiDbContext Create()

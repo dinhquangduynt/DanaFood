@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
             }
             catch(Exception ex)
             {
-                 return request.CreateResponse(HttpStatusCode.BadRequest);
+                 return request.CreateResponse(HttpStatusCode.OK,  ex.Message);
             }
            
 

@@ -21,3 +21,4 @@ D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\ThucPham.Common.d
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\ThucPham.Common.pdb
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Debug\ThucPham.Data.Migrations.AddField.resources
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Debug\ThucPham.Data.Migrations.AddField1.resources
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Debug\ThucPham.Data.Migrations.updateabc.resources
