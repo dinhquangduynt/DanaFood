@@ -1,0 +1,14 @@
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\bin\Debug\ClassLibrary1.dll.config
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\bin\Debug\EntityFramework.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\bin\Debug\EntityFramework.xml
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.xml
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+D:\workspace_\Project-CNPM\C#\ThucPham\ClassLibrary1\obj\Debug\ThucPham.Model.csprojResolveAssemblyReference.cache
