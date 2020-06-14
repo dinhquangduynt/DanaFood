@@ -18,7 +18,7 @@ namespace ThucPham.Service
 
         ProductCategory GetById(int id);
 
-        IEnumerable<ProductCategory> GetAll();
+        IEnumerable<ProductCategory> GetAll(string keyword = null);
 
         void Save();
     }
@@ -44,15 +44,18 @@ namespace ThucPham.Service
             return _productCategoryRepository.Delete(id);
         }
 
-        public IEnumerable<ProductCategory> GetAll()
+        public IEnumerable<ProductCategory> GetAll(string keyword = null)
         {
-            return _productCategoryRepository.GetAll();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                return _productCategoryRepository.GetMulti(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
+            }
+            else
+            {
+                return _productCategoryRepository.GetAll();
+            }
+           
         }
-
-        //public IEnumerable<ProductCategory> GetAllByParentId(int parentId)
-        //{
-        //    return _ProductCategoryRepository.GetMulti(x => x.Status && x.ParentID == parentId);
-        //}
 
         public ProductCategory GetById(int id)
         {

@@ -10,32 +10,59 @@ using WebAPI.Infrastructure.Extensions;
 namespace WebAPI.Controllers
 {
     [RoutePrefix("api/productcategory")]
-    public class ProductCategoryController : ApiControllerBase
+    public class ProductCategoryController : ApiController
     {
         IProductCategoryService _productCategoryService;
-        public ProductCategoryController(IProductCategoryService productCategoryService, IErrorService errorService) : base(errorService)
+        public ProductCategoryController(IProductCategoryService productCategoryService) : base()
         {
             this._productCategoryService = productCategoryService;
         }
 
         [Route("getall")]
-        public HttpResponseMessage Get(HttpRequestMessage request)
+        [Route("getall/{keyword}")]
+        [HttpGet]
+        public HttpResponseMessage Get(HttpRequestMessage request, string keyword = null)
         {
-            return CreateHttpRepose(request, () =>
+            HttpResponseMessage response = null;
+            try
             {
-                var listProduct = _productCategoryService.GetAll();
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listProduct);
-                return response;
-            });
+                 var listProduct = _productCategoryService.GetAll(keyword);
+                 response = request.CreateResponse(HttpStatusCode.OK, listProduct);
+                
+            }
+            catch(Exception ex)
+            {
+                response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+            return response;
+        }
+
+        [Route("detail/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage GetSingleById(HttpRequestMessage request, int id)
+        {
+            HttpResponseMessage response = null;
+            try
+            {
+                var productCategory = _productCategoryService.GetById(id);
+                response = request.CreateResponse(HttpStatusCode.OK, productCategory);
+
+            }
+            catch (Exception ex)
+            {
+                response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+            return response;
         }
 
         [Route("add")]
+        [HttpPost]
         public HttpResponseMessage Post(HttpRequestMessage request, ProductCategory productCategory)
         {
             HttpResponseMessage response = null;
             if (!ModelState.IsValid)
             {
-                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
             else
             {
@@ -47,6 +74,7 @@ namespace WebAPI.Controllers
         }
 
         [Route("update")]
+        [HttpPut]
         public HttpResponseMessage Put(HttpRequestMessage request, ProductCategory productCategory)
         {
             HttpResponseMessage response = null;
@@ -79,8 +107,8 @@ namespace WebAPI.Controllers
         }
 
 
-        [Route("delete")]
-
+        [Route("delete/{id:int}")]
+        [HttpDelete]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
             HttpResponseMessage response = null;

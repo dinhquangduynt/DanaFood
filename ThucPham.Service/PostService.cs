@@ -19,7 +19,7 @@ namespace ThucPham.Service
 
         Post GetById(int id);
 
-        IEnumerable<Post> GetAll();
+        IEnumerable<Post> GetAll(string keyword = null);
 
         //IEnumerable<Post> GetAllPaging();
 
@@ -51,8 +51,12 @@ namespace ThucPham.Service
             return _postRepository.Delete(id);
         }
 
-        public IEnumerable<Post> GetAll()
+        public IEnumerable<Post> GetAll(string keyword = null)
         {
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                return _postRepository.GetMulti(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
+            }
             return _postRepository.GetAll();
         }
 
@@ -61,11 +65,6 @@ namespace ThucPham.Service
             return _postRepository.GetSingleById(id);
         }
 
-        //public IEnumerable<Post> GetAllPaging()
-        //{
-        //    return _postRepository.GetMulti(x => x.Status);
-        //}
-
         public IEnumerable<Post> GetAllByTag(string tag)
         {
             return _postRepository.GetAllByTag(tag);
@@ -73,7 +72,7 @@ namespace ThucPham.Service
 
         public IEnumerable<Post> GetAllByCategory(int categoryId)
         {
-            return _postRepository.GetMulti(x => x.Status && x.CategoryID == categoryId, new string[] { "PostCategory" });
+            return _postRepository.GetMulti(x =>x.CategoryID == categoryId, new string[] { "PostCategory" });
         }
 
         public void Update(Post post)

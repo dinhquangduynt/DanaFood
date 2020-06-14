@@ -15,9 +15,7 @@ namespace ThucPham.Service
 
         PostCategory GetById(int id);
 
-        IEnumerable<PostCategory> GetAll();
-
-        //IEnumerable<PostCategory> GetAllByParentId(int parentId);
+        IEnumerable<PostCategory> GetAll(string keyword = null);
 
         void Save();
     }
@@ -42,15 +40,19 @@ namespace ThucPham.Service
             return _postCategoryRepository.Delete(id);
         }
 
-        public IEnumerable<PostCategory> GetAll()
+        public IEnumerable<PostCategory> GetAll(string keyword = null)
         {
-            return _postCategoryRepository.GetAll();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                return _postCategoryRepository.GetMulti(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
+            }
+            else
+            {
+                return _postCategoryRepository.GetAll();
+            }
+               
         }
 
-        //public IEnumerable<PostCategory> GetAllByParentId(int parentId)
-        //{
-        //    return _postCategoryRepository.GetMulti(x => x.Status && x.ParentID == parentId);
-        //}
 
         public PostCategory GetById(int id)
         {

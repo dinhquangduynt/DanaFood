@@ -32,6 +32,7 @@ D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.AspNet.Identity.Core
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.AspNet.Identity.Owin.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Owin.Cors.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Owin.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Owin.Host.SystemWeb.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Owin.Security.Cookies.dll
@@ -41,6 +42,7 @@ D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Web.Infrastructure.d
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Newtonsoft.Json.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Owin.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\System.Net.Http.Formatting.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\System.Web.Cors.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\System.Web.Helpers.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\System.Web.Http.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\System.Web.Http.WebHost.dll
@@ -53,6 +55,7 @@ D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\System.Web.WebPages.Razor.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\ThucPham.Data.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\ThucPham.Service.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\WebGrease.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\ThucPham.Common.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\ClassLibrary1.pdb
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\ThucPham.Data.pdb
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\ThucPham.Service.pdb
@@ -72,6 +75,7 @@ D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.AspNet.Identity.Enti
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.AspNet.Identity.Owin.xml
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Owin.xml
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Owin.Cors.xml
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Owin.Host.SystemWeb.xml
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Owin.Security.xml
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Owin.Security.Cookies.xml
@@ -88,11 +92,7 @@ D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\System.Web.WebPages.xml
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\System.Web.WebPages.Deployment.xml
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\System.Web.WebPages.Razor.xml
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Antlr3.Runtime.pdb
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\ThucPham.Common.pdb
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\obj\Debug\ThucPham.WebAPI.csprojResolveAssemblyReference.cache
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\obj\Debug\WebAPI.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\obj\Debug\WebAPI.pdb
-D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\ThucPham.Common.dll
-D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\ThucPham.Common.pdb
-D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Owin.Cors.dll
-D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\System.Web.Cors.dll
-D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Owin.Cors.xml

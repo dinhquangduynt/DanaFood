@@ -14,10 +14,7 @@ D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Release\EntityFramework
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Release\Microsoft.AspNet.Identity.Core.xml
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.csprojResolveAssemblyReference.cache
-D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.InitialDb.resources
-D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.AddGroupUser.resources
-D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.AddField.resources
-D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.AddField1.resources
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.csproj.GenerateResource.Cache
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.pdb
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.init.resources

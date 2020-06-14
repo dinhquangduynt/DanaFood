@@ -1,12 +1,17 @@
-﻿using Microsoft.AspNet.Identity.Owin;
+﻿
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using ThucPham.Model.Models;
 using WebAPI.App_Start;
 
 namespace WebAPI.Controllers
@@ -25,8 +30,8 @@ namespace WebAPI.Controllers
 
         public AccountController(ApplicationSignInManager signInManager, ApplicationUserManager userManager)
         {
-            this._signInManager = signInManager;
-            this._userManager = userManager;
+             SignInManager = signInManager;
+            UserManager = userManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -61,12 +66,15 @@ namespace WebAPI.Controllers
             if (!ModelState.IsValid)
             {
                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+
             }
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(userName, password, rememberMe, shouldLockout: false);
             return request.CreateResponse(HttpStatusCode.OK, result);
         }
+
+
 
         [HttpPost]
         [Authorize]

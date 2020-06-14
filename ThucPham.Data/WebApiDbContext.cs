@@ -51,7 +51,7 @@ namespace ThucPham.Data
             builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId }).ToTable("Roles");
             builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId).ToTable("UserLogins");
             builder.Entity<IdentityRole>().ToTable("UserRoles");
-            builder.Entity<IdentityUserClaim>().HasKey(i => i.Id).ToTable("UserClaims");
+            builder.Entity<IdentityUserClaim>().HasKey(i => i.UserId).ToTable("UserClaims");
         }
     }
 }

@@ -6,7 +6,9 @@ D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\EntityFramework.d
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\EntityFramework.SqlServer.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\ThucPham.Common.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\ClassLibrary1.pdb
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\ThucPham.Common.pdb
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\EntityFramework.xml
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\EntityFramework.SqlServer.xml
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
@@ -14,11 +16,5 @@ D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\Microsoft.AspNet.
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Debug\ThucPham.Data.csprojResolveAssemblyReference.cache
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Debug\ThucPham.Data.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Debug\ThucPham.Data.pdb
-D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Debug\ThucPham.Data.Migrations.InitialDb.resources
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Debug\ThucPham.Data.Migrations.init.resources
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Debug\ThucPham.Data.csproj.GenerateResource.Cache
-D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Debug\ThucPham.Data.Migrations.AddGroupUser.resources
-D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\ThucPham.Common.dll
-D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\bin\Debug\ThucPham.Common.pdb
-D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Debug\ThucPham.Data.Migrations.AddField.resources
-D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Debug\ThucPham.Data.Migrations.AddField1.resources
-D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Debug\ThucPham.Data.Migrations.updateabc.resources

@@ -18,8 +18,6 @@ namespace ThucPham.Service
 
         Product Delete(int id);
 
-        IEnumerable<Product> GetAll();
-
         IEnumerable<Product> GetAll(string keyword);
 
         IEnumerable<Product> GetLastest(int top);
@@ -27,16 +25,12 @@ namespace ThucPham.Service
         IEnumerable<Product> GetHotProduct(int top);
 
         //phan trang k dung
-        //IEnumerable<Product> GetListProductByCategoryIdPaging(int categoryId, int page, int pageSize, string sort, out int totalRow);
-        IEnumerable<Product> GetListProductByCategoryIdPaging(int categoryId, string sort);
+        IEnumerable<Product> GetAllByCategory(int categoryId);
         
         //phan trnag khong dung
         //IEnumerable<Product> Search(string keyword, int page, int pageSize, string sort, out int totalRow);
         IEnumerable<Product> Search(string keyword, string sort);
 
-        IEnumerable<Product> GetListProduct(string keyword);
-
-        IEnumerable<Product> GetReatedProducts(int id, int top);
 
         IEnumerable<string> GetListProductByName(string name);
 
@@ -51,10 +45,15 @@ namespace ThucPham.Service
         //void IncreaseView(int id);
 
             // loi chua viet duojc ben productRepository
-       // IEnumerable<Product> GetListProductByTag(string tagId);
-        // IEnumerable<Product> GetListProductByTag(string tagId, int page, int pagesize, out int totalRow);
+       IEnumerable<Product> GetListProductByTag(string tagId);
 
+
+        //chua dung den
         bool SellProduct(int productId, int quantity);
+
+        IEnumerable<Product> GetListProduct(string keyword);
+
+        IEnumerable<Product> GetReatedProducts(int id, int top);
     }
 
     public class ProductService : IProductService
@@ -105,11 +104,6 @@ namespace ThucPham.Service
         public Product Delete(int id)
         {
             return _productRepository.Delete(id);
-        }
-
-        public IEnumerable<Product> GetAll()
-        {
-            return _productRepository.GetAll();
         }
 
         public IEnumerable<Product> GetAll(string keyword)
@@ -168,25 +162,9 @@ namespace ThucPham.Service
 
         }
 
-        public IEnumerable<Product> GetListProductByCategoryIdPaging(int categoryId, string sort)
+        public IEnumerable<Product> GetAllByCategory(int categoryId)
         {
-            var query = _productRepository.GetMulti(x => x.Status && x.CategoryID == categoryId);
-
-            switch (sort)
-            {
-                //case "popular":
-                //    query = query.OrderByDescending(x => x.ViewCount);
-                //    break;
-                case "discount":
-                    query = query.OrderByDescending(x => x.PromotionPrice.HasValue);
-                    break;
-                case "price":
-                    query = query.OrderBy(x => x.Price);
-                    break;
-                default:
-                    query = query.OrderByDescending(x => x.CreatedDate);
-                    break;
-            }
+            var query = _productRepository.GetMulti(x=>x.CategoryID == categoryId);
 
             return query;
         }
@@ -235,6 +213,11 @@ namespace ThucPham.Service
         public Tag GetTag(string tagId)
         {
             return _tagRepository.GetSingleByCondition(x => x.ID == tagId);
+        }
+
+        public IEnumerable<Product> GetListProductByTag(string tagId)
+        {
+           return _productRepository.GetListProductByTag(tagId);
         }
 
         //Selling product

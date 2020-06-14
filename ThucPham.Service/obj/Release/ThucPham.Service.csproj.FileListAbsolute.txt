@@ -18,3 +18,11 @@ D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Service\bin\Release\Microsoft.As
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Service\obj\Release\ThucPham.Service.csprojResolveAssemblyReference.cache
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Service\obj\Release\ThucPham.Service.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Service\obj\Release\ThucPham.Service.pdb
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Service\bin\Release\Newtonsoft.Json.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Service\bin\Release\System.Net.Http.Formatting.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Service\bin\Release\System.Web.Http.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Service\bin\Release\System.Web.Http.WebHost.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Service\bin\Release\Newtonsoft.Json.xml
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Service\bin\Release\System.Net.Http.Formatting.xml
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Service\bin\Release\System.Web.Http.xml
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Service\bin\Release\System.Web.Http.WebHost.xml

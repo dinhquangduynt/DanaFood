@@ -8,7 +8,7 @@ namespace ThucPham.Data.Repositories
     public interface IPostRepository : IRepository<Post>
     {
         //IEnumerable<Post> GetAllByTag(string tag, int pageIndex, int pageSize, out int totalRow);
-        IEnumerable<Post> GetAllByTag(string tag);
+        IEnumerable<Post> GetAllByTag(string tagId);
     }
     public class PostRepository: RepositoryBase<Post>, IPostRepository
     {
@@ -17,12 +17,12 @@ namespace ThucPham.Data.Repositories
 
         }
 
-        public IEnumerable<Post> GetAllByTag(string tag)
+        public IEnumerable<Post> GetAllByTag(string tagId)
         {
             var query = from p in DbContext.Posts
                         join pt in DbContext.PostTags
                         on p.ID equals pt.PostID
-                        where pt.TagID == tag && p.Status
+                        where pt.TagID == tagId && p.Status
                         orderby p.CreatedDate descending
                         select p;
 
