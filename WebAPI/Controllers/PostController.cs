@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
         [Route("getall")]
         [Route("getall/{keyword}")]
         [HttpGet]
-        public HttpResponseMessage Get(HttpRequestMessage request, string keyword)
+        public HttpResponseMessage Get(HttpRequestMessage request, string keyword = null)
         {
             HttpResponseMessage response = null;
             try

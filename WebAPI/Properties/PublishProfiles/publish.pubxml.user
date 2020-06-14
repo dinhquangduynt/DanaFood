@@ -28,7 +28,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/10/2020 16:05:49</publishTime>
     </File>
     <File Include="bin/ClassLibrary1.dll">
-      <publishTime>06/14/2020 16:43:28</publishTime>
+      <publishTime>06/14/2020 16:55:31</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>02/25/2014 01:34:42</publishTime>
@@ -166,16 +166,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/10/2020 16:05:49</publishTime>
     </File>
     <File Include="bin/ThucPham.Common.dll">
-      <publishTime>06/14/2020 16:43:28</publishTime>
+      <publishTime>06/14/2020 16:55:31</publishTime>
     </File>
     <File Include="bin/ThucPham.Data.dll">
-      <publishTime>06/14/2020 16:43:29</publishTime>
+      <publishTime>06/14/2020 17:32:45</publishTime>
     </File>
     <File Include="bin/ThucPham.Service.dll">
-      <publishTime>06/14/2020 16:43:29</publishTime>
+      <publishTime>06/14/2020 17:32:45</publishTime>
     </File>
     <File Include="bin/WebAPI.dll">
-      <publishTime>06/14/2020 16:43:33</publishTime>
+      <publishTime>06/14/2020 17:32:49</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>06/10/2020 16:05:50</publishTime>
@@ -208,10 +208,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/10/2020 16:05:48</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>06/13/2020 15:24:25</publishTime>
+      <publishTime>06/14/2020 16:55:31</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/14/2020 16:43:33</publishTime>
+      <publishTime>06/14/2020 17:32:50</publishTime>
     </File>
   </ItemGroup>
 </Project>
