@@ -86,7 +86,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        [Authorize]
+        //[Authorize]
         [Route("update")]
         [HttpPut]
         public HttpResponseMessage Update(HttpRequestMessage request, Product product)
@@ -112,7 +112,7 @@ namespace WebAPI.Controllers
         }
 
 
-        [Authorize]
+        //[Authorize]
         [Route("add")]
         [HttpPost]
         public HttpResponseMessage Add(HttpRequestMessage request, Product product)
@@ -143,7 +143,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        [Authorize]
+        //[Authorize]
         [Route("delete/{id:int}")]
         [HttpGet]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)

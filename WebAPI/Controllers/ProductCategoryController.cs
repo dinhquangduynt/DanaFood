@@ -57,7 +57,7 @@ namespace WebAPI.Controllers
 
         [Authorize]
         [Route("add")]
-        [HttpPost]
+        //[HttpPost]
         public HttpResponseMessage Post(HttpRequestMessage request, ProductCategory productCategory)
         {
             HttpResponseMessage response = null;
@@ -74,7 +74,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        [Authorize]
+        //[Authorize]
         [Route("update")]
         [HttpPut]
         public HttpResponseMessage Put(HttpRequestMessage request, ProductCategory productCategory)
@@ -111,7 +111,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        [Authorize]
+        //[Authorize]
         [Route("delete/{id:int}")]
         [HttpDelete]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)

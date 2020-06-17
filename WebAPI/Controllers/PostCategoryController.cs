@@ -33,7 +33,7 @@ namespace WebAPI.Controllers
             {
                 var listCategory = _postCategoryService.GetAll(keyword);
 
-                response = request.CreateResponse(HttpStatusCode.OK, user);
+                response = request.CreateResponse(HttpStatusCode.OK, listCategory);
                 return response;
 
             }
@@ -67,7 +67,7 @@ namespace WebAPI.Controllers
 
 
         //Post
-        [Authorize]
+        //[Authorize]
         [Route("add")]
         [HttpPost]
         public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
@@ -91,7 +91,7 @@ namespace WebAPI.Controllers
 
 
         //Put
-        [Authorize]
+        //[Authorize]
         [Route("update")]
         [HttpPut]
         public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
@@ -117,7 +117,7 @@ namespace WebAPI.Controllers
 
 
         //Delete
-        [Authorize]
+        //[Authorize]
         [Route("delete/{id:int}")]
         [HttpDelete]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
