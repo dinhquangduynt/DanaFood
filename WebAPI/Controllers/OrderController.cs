@@ -11,6 +11,7 @@ using WebAPI.Infrastructure.Extensions;
 namespace WebAPI.Controllers
 {
     [RoutePrefix("api/order")]
+    [Authorize]
     public class OrderController : ApiController
     {
         IOrderService _orderService;

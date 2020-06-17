@@ -86,6 +86,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
+        [Authorize]
         [Route("update")]
         [HttpPut]
         public HttpResponseMessage Update(HttpRequestMessage request, Product product)
@@ -96,6 +97,9 @@ namespace WebAPI.Controllers
             {
                 var productDb = _productService.GetById(product.ID);
                 productDb.UpdateProduct(product);
+                productDb.UpdatedDate = DateTime.Now;
+                productDb.UpdatedBy = User.Identity.Name;
+
                 _productService.Update(productDb);
                 _productService.Save();
                 response = request.CreateResponse(HttpStatusCode.OK, productDb);
@@ -107,6 +111,8 @@ namespace WebAPI.Controllers
             return response;
         }
 
+
+        [Authorize]
         [Route("add")]
         [HttpPost]
         public HttpResponseMessage Add(HttpRequestMessage request, Product product)
@@ -120,7 +126,11 @@ namespace WebAPI.Controllers
                 }
                 else
                 {
-                    var productDb = _productService.Add(product);
+                    var productDb = new Product();
+                    productDb.CreatedBy = User.Identity.Name;
+                    productDb.CreatedDate = DateTime.Now;
+                    productDb = _productService.Add(product);
+
                     _productService.Save();
                     response = request.CreateResponse(HttpStatusCode.OK, productDb);
                 }
@@ -133,6 +143,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
+        [Authorize]
         [Route("delete/{id:int}")]
         [HttpGet]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)

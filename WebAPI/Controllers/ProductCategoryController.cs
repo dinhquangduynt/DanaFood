@@ -55,6 +55,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
+        [Authorize]
         [Route("add")]
         [HttpPost]
         public HttpResponseMessage Post(HttpRequestMessage request, ProductCategory productCategory)
@@ -73,6 +74,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
+        [Authorize]
         [Route("update")]
         [HttpPut]
         public HttpResponseMessage Put(HttpRequestMessage request, ProductCategory productCategory)
@@ -92,8 +94,11 @@ namespace WebAPI.Controllers
                     //update date productCate into productCateDb
                     productCateDb.UpdateProductCategory(productCategory);
 
+                    productCateDb.UpdatedBy = User.Identity.Name;
+                    productCateDb.UpdatedDate = DateTime.Now;
                     // update into db
                     _productCategoryService.Update(productCateDb);
+
                     _productCategoryService.Save();
                     response = request.CreateResponse(HttpStatusCode.OK);
                 }
@@ -106,7 +111,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
-
+        [Authorize]
         [Route("delete/{id:int}")]
         [HttpDelete]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)

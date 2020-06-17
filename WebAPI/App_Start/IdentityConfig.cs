@@ -82,5 +82,10 @@ namespace WebAPI.App_Start
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
+
+        internal Task PasswordSignInAsync(string username, string password, bool shouldLockout)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

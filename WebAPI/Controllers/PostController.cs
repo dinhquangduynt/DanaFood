@@ -89,6 +89,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
+        [Authorize]
         [Route("update")]
         [HttpPut]
         public HttpResponseMessage Update(HttpRequestMessage request, Post post)
@@ -99,6 +100,8 @@ namespace WebAPI.Controllers
             {
                 var postDb = _postService.GetById(post.ID);
                 postDb.UpdatePost(post);
+                postDb.UpdatedBy = User.Identity.Name;
+                postDb.UpdatedDate = DateTime.Now;
                 _postService.Update(postDb);
                 _postService.Save();
                 response = request.CreateResponse(HttpStatusCode.OK, postDb);
@@ -110,6 +113,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
+        [Authorize]
         [Route("add")]
         [HttpPost]
         public HttpResponseMessage Add(HttpRequestMessage request, Post post)
@@ -123,7 +127,10 @@ namespace WebAPI.Controllers
                 }
                 else
                 {
-                    var newPost = _postService.Add(post);
+                    var newPost = new Post();
+                    newPost.CreatedBy = User.Identity.Name;
+                    newPost.CreatedDate = DateTime.Now;
+                    newPost = _postService.Add(post);
                     _postService.Save();
                     response = request.CreateResponse(HttpStatusCode.OK, newPost);
                 }
@@ -136,6 +143,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
+        [Authorize]
         [Route("delete/{id:int}")]
         [HttpGet]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)

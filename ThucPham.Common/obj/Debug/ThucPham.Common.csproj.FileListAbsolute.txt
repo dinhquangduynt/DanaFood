@@ -1,5 +1,4 @@
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Common\bin\Debug\ThucPham.Common.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Common\bin\Debug\ThucPham.Common.pdb
-D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Common\obj\Debug\ThucPham.Common.csprojResolveAssemblyReference.cache
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Common\obj\Debug\ThucPham.Common.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Common\obj\Debug\ThucPham.Common.pdb

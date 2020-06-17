@@ -6,11 +6,11 @@ using ThucPham.Model.Models;
 using ThucPham.Service;
 using WebAPI.Infrastructure.Core;
 using WebAPI.Infrastructure.Extensions;
+using Microsoft.AspNet.Identity;
 
 namespace WebAPI.Controllers
 {
     [RoutePrefix("api/postcategory")]
-    //[Authorize]
     public class PostCategoryController : ApiController
     {
         IPostCategoryService _postCategoryService;
@@ -27,12 +27,13 @@ namespace WebAPI.Controllers
         [HttpGet]
         public HttpResponseMessage Get(HttpRequestMessage request, string keyword = null)
         {
+            string user = RequestContext.Principal.Identity.GetUserId();
             HttpResponseMessage response = null;
             try
             {
                 var listCategory = _postCategoryService.GetAll(keyword);
 
-                response = request.CreateResponse(HttpStatusCode.OK, listCategory);
+                response = request.CreateResponse(HttpStatusCode.OK, user);
                 return response;
 
             }
@@ -66,6 +67,7 @@ namespace WebAPI.Controllers
 
 
         //Post
+        [Authorize]
         [Route("add")]
         [HttpPost]
         public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
@@ -89,6 +91,7 @@ namespace WebAPI.Controllers
 
 
         //Put
+        [Authorize]
         [Route("update")]
         [HttpPut]
         public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
@@ -114,6 +117,7 @@ namespace WebAPI.Controllers
 
 
         //Delete
+        [Authorize]
         [Route("delete/{id:int}")]
         [HttpDelete]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)

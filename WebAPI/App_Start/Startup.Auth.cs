@@ -15,6 +15,9 @@ using ThucPham.Service;
 using WebAPI.Infrastructure.Core;
 using System.Linq;
 using ThucPham.Common;
+using WebAPI.Provider;
+using Microsoft.Owin.Security;
+using System.Collections.Generic;
 
 [assembly: OwinStartup(typeof(WebAPI.App_Start.Startup))]
 
@@ -22,6 +25,10 @@ namespace WebAPI.App_Start
 {
     public partial class Startup
     {
+        public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
+
+        public static string PublicClientId { get; private set; }
+
         public void ConfigureAuth(IAppBuilder app)
         {
 
@@ -32,36 +39,40 @@ namespace WebAPI.App_Start
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
+
+            //app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            //app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+
+            // login with claim
+
             app.CreatePerOwinContext<UserManager<User>>(CreateManager);
 
+            // tesst
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("/oauth/token"),
+                TokenEndpointPath = new PathString("/api/login/token"),
                 Provider = new AuthorizationServerProvider(),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(60),
                 AllowInsecureHttp = true,
 
             });
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
 
-            // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
-
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
-
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
-
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            //PublicClientId = "self";
+            //OAuthOptions = new OAuthAuthorizationServerOptions
             //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            //    TokenEndpointPath = new PathString("/Token"),
+            //    Provider = new ApplicationOAuthProvider(PublicClientId),
+            //    AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+            //    AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(60),
+            //    // In production mode set AllowInsecureHttp = false
+            //    AllowInsecureHttp = true
+            //};
+
+            //// Enable the application to use bearer tokens to authenticate users
+            //app.UseOAuthBearerTokens(OAuthOptions);
+
+
         }
 
         public class AuthorizationServerProvider : OAuthAuthorizationServerProvider
@@ -72,11 +83,11 @@ namespace WebAPI.App_Start
             }
             public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
             {
-                var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
+                //var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
 
-                if (allowedOrigin == null) allowedOrigin = "*";
+                //if (allowedOrigin == null) allowedOrigin = "*";
 
-                context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
+                //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
 
                 UserManager<User> userManager = context.OwinContext.GetUserManager<UserManager<User>>();
                 User user;
@@ -93,20 +104,31 @@ namespace WebAPI.App_Start
                 }
                 if (user != null)
                 {
-                    var applicationGroupService = ServiceFactory.Get<IGroupService>();
-                    var listGroup = applicationGroupService.GetListGroupByUserId(user.Id);
-                    if (listGroup.Any(x => x.Name == CommonConstants.Administrator))
-                    {
-                        ClaimsIdentity identity = await userManager.CreateIdentityAsync(
-                                       user,
-                                       DefaultAuthenticationTypes.ExternalBearer);
-                        context.Validated(identity);
-                    }
-                    else
-                    {
-                        context.Rejected();
-                        context.SetError("invalid_group", "Bạn không phải là admin");
-                    }
+
+                    //phan quyen admin, k can thiet
+                    //var applicationGroupService = ServiceFactory.Get<IGroupService>();
+                    //var listGroup = applicationGroupService.GetListGroupByUserId(user.Id);
+
+                    //if (listGroup.Any(x => x.Name == CommonConstants.Administrator))
+                    //{
+                    ClaimsIdentity identity = await userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ExternalBearer);
+
+
+                    ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
+                       OAuthDefaults.AuthenticationType);
+                    ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
+                        CookieAuthenticationDefaults.AuthenticationType);
+
+                    AuthenticationProperties properties = CreateProperties(user.UserName, user.Email);
+                    AuthenticationTicket ticket = new AuthenticationTicket(identity, properties);
+                        context.Validated(ticket);
+                    //context.Request.Context.Authentication.SignIn(cookiesIdentity);
+                    //}
+                    //else
+                    //{
+                    //    context.Rejected();
+                    //    context.SetError("invalid_group", "Bạn không phải là admin");
+                    //}
 
                 }
                 else
@@ -124,6 +146,16 @@ namespace WebAPI.App_Start
             var userStore = new UserStore<User>(context.Get<WebApiDbContext>());
             var owinManager = new UserManager<User>(userStore);
             return owinManager;
+        }
+
+        public static AuthenticationProperties CreateProperties(string userName, string fullname)
+        {
+            IDictionary<string, string> data = new Dictionary<string, string>
+            {
+                { "userName", userName },
+                { "Fullname", fullname }
+            };
+            return new AuthenticationProperties(data);
         }
     }
 }

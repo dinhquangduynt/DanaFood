@@ -13,6 +13,8 @@ using System.Web;
 using System.Web.Http;
 using ThucPham.Model.Models;
 using WebAPI.App_Start;
+using WebAPI.Models;
+using static WebAPI.App_Start.Startup;
 
 namespace WebAPI.Controllers
 {
@@ -30,7 +32,7 @@ namespace WebAPI.Controllers
 
         public AccountController(ApplicationSignInManager signInManager, ApplicationUserManager userManager)
         {
-             SignInManager = signInManager;
+            SignInManager = signInManager;
             UserManager = userManager;
         }
 
@@ -58,32 +60,58 @@ namespace WebAPI.Controllers
             }
         }
 
-        [HttpPost]
         [AllowAnonymous]
-        [Route("login")]
-        public async Task<HttpResponseMessage> Login(HttpRequestMessage request, string userName, string password, bool rememberMe)
+        [Route("register")]
+        [HttpPost]
+        public async Task<HttpResponseMessage> Register(HttpRequestMessage request, RegisterViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-
             }
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(userName, password, rememberMe, shouldLockout: false);
-            return request.CreateResponse(HttpStatusCode.OK, result);
+
+            var user = new User() { UserName = model.Email, Email = model.Email, Address = model.Address, PhoneNumber = model.PhoneNumber, BirthDay = model.BirthDay };
+
+            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            return request.CreateResponse(HttpStatusCode.OK);
         }
 
 
 
+        [AllowAnonymous]
+        [Route("login")]
         [HttpPost]
-        [Authorize]
-        [Route("logout")]
-        public HttpResponseMessage Logout(HttpRequestMessage request)
+        public async Task<HttpResponseMessage> Login(HttpRequestMessage request, LoginViewModel model)
         {
-            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
-            authenticationManager.SignOut();
-            return request.CreateResponse(HttpStatusCode.OK, new { success = true });
+            HttpResponseMessage response = null;
+            if (!ModelState.IsValid)
+            {
+                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+
+            else
+            {
+                try
+                {
+                    User user = await UserManager.FindAsync(model.Username, model.Password);
+                    if (user != null)
+                    {
+                        ClaimsIdentity identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ExternalBearer);
+
+                        response = request.CreateResponse(HttpStatusCode.OK, identity);
+                    }
+                }
+                catch (Exception ex)
+                {
+                  
+                    response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+                }
+
+
+            }
+
+            return response;
         }
     }
 }
