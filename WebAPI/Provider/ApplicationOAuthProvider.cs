@@ -66,7 +66,6 @@ namespace WebAPI.Provider
             {
                 context.Validated();
             }
-
             return Task.FromResult<object>(null);
         }
 

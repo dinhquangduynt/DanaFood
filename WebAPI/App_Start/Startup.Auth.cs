@@ -39,38 +39,23 @@ namespace WebAPI.App_Start
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
+            app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
-            //app.UseCookieAuthentication(new CookieAuthenticationOptions());
-            //app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
-
-            // login with claim
-
-            app.CreatePerOwinContext<UserManager<User>>(CreateManager);
-
-            // tesst
-            app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
+            PublicClientId = "self";
+            OAuthOptions = new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("/api/login/token"),
-                Provider = new AuthorizationServerProvider(),
+                TokenEndpointPath = new PathString("/Token"),
+               Provider = new ApplicationOAuthProvider(PublicClientId),
+              
+                AuthorizeEndpointPath = new PathString("/api/account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(60),
-                AllowInsecureHttp = true,
+                // In production mode set AllowInsecureHttp = false
+                AllowInsecureHttp = true
+            };
 
-            });
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
-
-            //PublicClientId = "self";
-            //OAuthOptions = new OAuthAuthorizationServerOptions
-            //{
-            //    TokenEndpointPath = new PathString("/Token"),
-            //    Provider = new ApplicationOAuthProvider(PublicClientId),
-            //    AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-            //    AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(60),
-            //    // In production mode set AllowInsecureHttp = false
-            //    AllowInsecureHttp = true
-            //};
-
-            //// Enable the application to use bearer tokens to authenticate users
-            //app.UseOAuthBearerTokens(OAuthOptions);
+            // Enable the application to use bearer tokens to authenticate users
+            app.UseOAuthBearerTokens(OAuthOptions);
 
 
         }

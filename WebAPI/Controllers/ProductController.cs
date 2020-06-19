@@ -127,7 +127,7 @@ namespace WebAPI.Controllers
                 else
                 {
                     var productDb = new Product();
-                    productDb.CreatedBy = User.Identity.Name;
+                   // productDb.CreatedBy = User.Identity.Name;
                     productDb.CreatedDate = DateTime.Now;
                     productDb = _productService.Add(product);
 

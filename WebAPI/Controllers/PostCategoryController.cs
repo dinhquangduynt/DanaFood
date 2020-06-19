@@ -65,9 +65,7 @@ namespace WebAPI.Controllers
 
         }
 
-
-        //Post
-        //[Authorize]
+       // [Authorize]
         [Route("add")]
         [HttpPost]
         public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
@@ -92,6 +90,7 @@ namespace WebAPI.Controllers
 
         //Put
         //[Authorize]
+
         [Route("update")]
         [HttpPut]
         public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)

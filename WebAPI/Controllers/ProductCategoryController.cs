@@ -55,9 +55,9 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        [Authorize]
+        //[Authorize]
         [Route("add")]
-        //[HttpPost]
+        [HttpPost]
         public HttpResponseMessage Post(HttpRequestMessage request, ProductCategory productCategory)
         {
             HttpResponseMessage response = null;
