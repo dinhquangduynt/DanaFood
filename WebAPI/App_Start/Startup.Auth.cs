@@ -37,17 +37,18 @@ namespace WebAPI.App_Start
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(WebApiDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
+            // Enable the application to use a cookie to store information for the signed in user
+            // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
+            // Configure the application for OAuth based flow
             PublicClientId = "self";
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/Token"),
-               Provider = new ApplicationOAuthProvider(PublicClientId),
-              
+                Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(60),
                 // In production mode set AllowInsecureHttp = false
@@ -57,90 +58,7 @@ namespace WebAPI.App_Start
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
 
-
         }
 
-        public class AuthorizationServerProvider : OAuthAuthorizationServerProvider
-        {
-            public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
-            {
-                context.Validated();
-            }
-            public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
-            {
-                //var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
-
-                //if (allowedOrigin == null) allowedOrigin = "*";
-
-                //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
-
-                UserManager<User> userManager = context.OwinContext.GetUserManager<UserManager<User>>();
-                User user;
-                try
-                {
-                    user = await userManager.FindAsync(context.UserName, context.Password);
-                }
-                catch
-                {
-                    // Could not retrieve the user due to error.
-                    context.SetError("server_error");
-                    context.Rejected();
-                    return;
-                }
-                if (user != null)
-                {
-
-                    //phan quyen admin, k can thiet
-                    //var applicationGroupService = ServiceFactory.Get<IGroupService>();
-                    //var listGroup = applicationGroupService.GetListGroupByUserId(user.Id);
-
-                    //if (listGroup.Any(x => x.Name == CommonConstants.Administrator))
-                    //{
-                    ClaimsIdentity identity = await userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ExternalBearer);
-
-
-                    ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
-                       OAuthDefaults.AuthenticationType);
-                    ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
-                        CookieAuthenticationDefaults.AuthenticationType);
-
-                    AuthenticationProperties properties = CreateProperties(user.UserName, user.Email);
-                    AuthenticationTicket ticket = new AuthenticationTicket(identity, properties);
-                        context.Validated(ticket);
-                    //context.Request.Context.Authentication.SignIn(cookiesIdentity);
-                    //}
-                    //else
-                    //{
-                    //    context.Rejected();
-                    //    context.SetError("invalid_group", "Bạn không phải là admin");
-                    //}
-
-                }
-                else
-                {
-                    context.SetError("invalid_grant", "Tài khoản hoặc mật khẩu không đúng.'");
-                    context.Rejected();
-                }
-            }
-        }
-
-
-
-        private static UserManager<User> CreateManager(IdentityFactoryOptions<UserManager<User>> options, IOwinContext context)
-        {
-            var userStore = new UserStore<User>(context.Get<WebApiDbContext>());
-            var owinManager = new UserManager<User>(userStore);
-            return owinManager;
-        }
-
-        public static AuthenticationProperties CreateProperties(string userName, string fullname)
-        {
-            IDictionary<string, string> data = new Dictionary<string, string>
-            {
-                { "userName", userName },
-                { "Fullname", fullname }
-            };
-            return new AuthenticationProperties(data);
-        }
     }
 }

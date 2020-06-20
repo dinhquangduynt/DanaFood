@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using ThucPham.Model.Models;
 using ThucPham.Service;
@@ -111,11 +113,10 @@ namespace WebAPI.Controllers
             return response;
         }
 
-
         //[Authorize]
         [Route("add")]
         [HttpPost]
-        public HttpResponseMessage Add(HttpRequestMessage request, Product product)
+        public async System.Threading.Tasks.Task<HttpResponseMessage> Add(HttpRequestMessage request, Product product)
         {
             HttpResponseMessage response = null;
             try
@@ -126,15 +127,17 @@ namespace WebAPI.Controllers
                 }
                 else
                 {
+
                     var productDb = new Product();
-                   // productDb.CreatedBy = User.Identity.Name;
-                    productDb.CreatedDate = DateTime.Now;
+                    // productDb.CreatedBy = User.Identity.Name;
+                    // productDb.UpdateProduct(product);
+                    product.CreatedDate = DateTime.Now;
                     productDb = _productService.Add(product);
 
                     _productService.Save();
                     response = request.CreateResponse(HttpStatusCode.OK, productDb);
                 }
-                
+
             }
             catch (Exception ex)
             {

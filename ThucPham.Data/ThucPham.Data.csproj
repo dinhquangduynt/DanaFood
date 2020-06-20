@@ -90,6 +90,7 @@
     <Compile Include="Repositories\SupportOnlineRepository.cs" />
     <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="Repositories\UserGroupRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="WebApiDbContext.cs" />
   </ItemGroup>
   <ItemGroup>

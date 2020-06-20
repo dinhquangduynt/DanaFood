@@ -96,3 +96,5 @@ D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\ThucPham.Common.pdb
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\obj\Release\ThucPham.WebAPI.csprojResolveAssemblyReference.cache
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\obj\Release\WebAPI.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\obj\Release\WebAPI.pdb
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\System.Web.Http.Owin.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\System.Web.Http.Owin.xml

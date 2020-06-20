@@ -23,11 +23,13 @@ namespace ThucPham.Service
     {
         private IPostCategoryRepository _postCategoryRepository;
         private IUnitOfWork _unitOfWork;
+        private IPostRepository _postRepository;
 
-        public PostCategoryService(IPostCategoryRepository postCategoryRepository, IUnitOfWork unitOfWork)
+        public PostCategoryService(IPostCategoryRepository postCategoryRepository, IUnitOfWork unitOfWork, IPostRepository postRepository)
         {
             this._postCategoryRepository = postCategoryRepository;
             this._unitOfWork = unitOfWork;
+            this._postRepository = postRepository;
         }
 
         public PostCategory Add(PostCategory postCategory)
@@ -37,6 +39,11 @@ namespace ThucPham.Service
 
         public PostCategory Delete(int id)
         {
+            if(_postRepository.Count(x => x.CategoryID == id) > 0)
+            {
+                _postRepository.DeleteMulti(x => x.CategoryID == id);
+            }
+           
             return _postCategoryRepository.Delete(id);
         }
 

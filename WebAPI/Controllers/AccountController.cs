@@ -14,19 +14,17 @@ using System.Web.Http;
 using ThucPham.Model.Models;
 using WebAPI.App_Start;
 using WebAPI.Models;
-using static WebAPI.App_Start.Startup;
 using System.Threading;
 using Microsoft.Owin.Security.OAuth;
 using Microsoft.Owin.Security.Cookies;
 using WebAPI.Provider;
+using WebAPI.Results;
 
 namespace WebAPI.Controllers
 {
     [RoutePrefix("api/account")]
     public class AccountController : ApiController
     {
-
-
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
@@ -75,52 +73,45 @@ namespace WebAPI.Controllers
 
 
 
-        [AllowAnonymous]
-        [Route("login")]
-        [HttpPost]
-        public async Task<HttpResponseMessage> Login(HttpRequestMessage request, LoginViewModel model)
-        {
-            HttpResponseMessage response = null;
-            if (!ModelState.IsValid)
-            {
-                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
+        //[AllowAnonymous]
+        //[Route("login")]
+        //[HttpPost]
+        //public async Task<HttpResponseMessage> Login(HttpRequestMessage request, LoginViewModel model)
+        //{
+        //    HttpResponseMessage response = null;
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+        //    }
 
-            else
-            {
-                try
-                {
-                    User user = await UserManager.FindAsync(model.Username, model.Password);
-                    if (user != null)
-                    {
-                        ClaimsIdentity identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ExternalBearer);
-
-                        response = request.CreateResponse(HttpStatusCode.OK, identity);
-                    }
-                }
-                catch (Exception ex)
-                {
+        //    else
+        //    {
+        //        try
+        //        {
+        //            User user = await UserManager.FindAsync(model.Username, model.Password);
+        //            if (user != null)
+        //            {
+        //               ClaimsIdentity identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ExternalBearer);
+        //                response = request.CreateResponse(HttpStatusCode.OK, identity);
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
                   
-                    response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
-                }
+        //            response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+        //        }
 
-            }
+        //    }
 
-            return response;
-        }
-
+        //    return response;
+        //}
 
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
         [Route("ExternalLogin", Name = "ExternalLogin")]
-        public async Task<IHttpActionResult> GetExternalLogin(string provider, string error = null)
+        public async Task<IHttpActionResult> GetExternalLogin(string provider)
         {
-            if (error != null)
-            {
-                return Redirect(Url.Content("~/") + "#error=" + Uri.EscapeDataString(error));
-            }
-
             if (!User.Identity.IsAuthenticated)
             {
                 return new ChallengeResult(provider, this);
@@ -165,6 +156,7 @@ namespace WebAPI.Controllers
 
             return Ok();
         }
+
 
 
         private class ExternalLoginData
@@ -220,29 +212,6 @@ namespace WebAPI.Controllers
             get { return Request.GetOwinContext().Authentication; }
         }
         #endregion
-
-    }
-
-    public class ChallengeResult : IHttpActionResult
-    {
-        public ChallengeResult(string loginProvider, ApiController controller)
-        {
-            LoginProvider = loginProvider;
-            Request = controller.Request;
-        }
-
-        public string LoginProvider { get; set; }
-        public HttpRequestMessage Request { get; set; }
-
-
-        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
-        {
-
-            Request.GetOwinContext().Authentication.Challenge(LoginProvider);
-
-            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
-            response.RequestMessage = Request;
-            return Task.FromResult(response);
-        }
+ 
     }
 }

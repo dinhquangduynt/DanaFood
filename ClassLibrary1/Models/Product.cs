@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
 using ThucPham.Model.Abstract;
 
 namespace ThucPham.Model.Models
@@ -36,7 +37,6 @@ namespace ThucPham.Model.Models
         public int Quantity { set; get; }
         public string Tags { get; set; }
         //public decimal OriginalPrice { set; get; } chua can
-
 
         [ForeignKey("CategoryID")]
         public virtual ProductCategory ProductCategory { get; set; }

@@ -27,11 +27,13 @@ namespace ThucPham.Service
     {
         private IProductCategoryRepository _productCategoryRepository;
         private IUnitOfWork _unitOfWork;
+        private IProductRepository _productRepository;
 
-        public ProductCategoryService(IProductCategoryRepository productCategoryRepository, IUnitOfWork unitOfWork)
+        public ProductCategoryService(IProductCategoryRepository productCategoryRepository, IUnitOfWork unitOfWork, IProductRepository productRepository)
         {
             this._productCategoryRepository = productCategoryRepository;
             this._unitOfWork = unitOfWork;
+            this._productRepository = productRepository;
         }
 
         public ProductCategory Add(ProductCategory ProductCategory)
@@ -41,6 +43,11 @@ namespace ThucPham.Service
 
         public ProductCategory Delete(int id)
         {
+            if (_productRepository.Count(x => x.CategoryID == id) > 0)
+            {
+                _productRepository.DeleteMulti(x => x.CategoryID == id);
+            }
+           
             return _productCategoryRepository.Delete(id);
         }
 
