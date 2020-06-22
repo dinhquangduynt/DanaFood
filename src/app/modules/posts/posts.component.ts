@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { PostCategory } from 'src/app/services/post/post.model';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { PostItemComponent } from './post-item/post-item.component';
+import { PosteditComponent } from './postedit/postedit.component';
 
 @Component({
   selector: 'app-posts',
@@ -32,13 +33,13 @@ export class PostsComponent implements OnInit {
     let productcate = this.postCate.getAllPosts();
     productcate.subscribe(postCateItem => this.dataSource.data = postCateItem as PostCategory[]);
   }
-  onEdit(row){
-    //this.postCate.populateForm(row);
+  onEdit(postcate : PostCategory){
+    this.postCate.formData = postcate;
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
-    this.dialog.open(PostItemComponent,dialogConfig);
+    dialogConfig.autoFocus= true;
+    dialogConfig.width= "70%";
+    this.dialog.open(PosteditComponent, dialogConfig);
   }
   onCreate() {
     //this.service.initializeFormGroup();

@@ -14,7 +14,7 @@ export class ProductsService {
     return this.http.get<ProductCategory[]>(this.url + '/getall');
   }
   getProductById(productId : number): Observable<ProductCategory> {
-    return this.http.get<ProductCategory>(this.url + '/getsinglebyid' + productId);
+    return this.http.get<ProductCategory>(this.url + '/getsinglebyid/' + productId);
   }
   createProduct(product: ProductCategory): Observable<ProductCategory> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
@@ -28,7 +28,7 @@ export class ProductsService {
   }
   deleteProductById(productId : number) {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
-    return this.http.delete<number>(this.url + '/delete' + productId, httpOptions);
+    return this.http.delete<number>(this.url + '/delete/' + productId, httpOptions);
   }
 }
 

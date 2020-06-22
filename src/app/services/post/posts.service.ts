@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { PostCategory } from './post.model';
 
 @Injectable({
@@ -10,11 +10,12 @@ import { PostCategory } from './post.model';
 export class PostsService {
   url =  'https://danafoodapp.azurewebsites.net/api/postcategory';
   constructor(private http: HttpClient) { }
+  formData : PostCategory;
   getAllPosts(): Observable<PostCategory[]> {
     return this.http.get<PostCategory[]>(this.url + '/getall');
   }
   getPostById(postId : number): Observable<PostCategory> {
-    return this.http.get<PostCategory>(this.url + '/getsinglebyid' + postId);
+    return this.http.get<PostCategory>(this.url + '/getsinglebyid/' + postId);
   }
   createPost(post: PostCategory): Observable<PostCategory> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
@@ -28,6 +29,10 @@ export class PostsService {
   }
   deletePostById(postId : number) {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
-    return this.http.delete<number>(this.url + '/delete?id=' + postId, httpOptions);
+    return this.http.delete<number>(this.url + '/delete/' + postId, httpOptions);
+  }
+  private _listners = new Subject<any>();
+  filter(filterBy: string){
+    this._listners.next(filterBy);
   }
 }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layouts/default/default.module';
 import { PosteditComponent } from './modules/posts/postedit/postedit.component';
+import { PostaddComponent } from './modules/posts/postadd/postadd.component';
 
 
 
@@ -13,6 +14,7 @@ import { PosteditComponent } from './modules/posts/postedit/postedit.component';
   declarations: [
     AppComponent,
     PosteditComponent,
+    PostaddComponent,
 
   ],
   imports: [
