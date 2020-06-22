@@ -6,14 +6,14 @@
     <form class="form" fxLayoutAlign="stretch" fxLayout="column">
       <mat-form-field>
         <mat-label>Username</mat-label>
-        <input matInput placeholder="Enter Username">
+        <input matInput placeholder="Enter Username" name="username" [(ngModel)]="loginadmindata.Username">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input type="password" matInput placeholder="Enter Password">
+        <input type="password" matInput placeholder="Enter Password" name="password" [(ngModel)]="loginadmindata.Password">
       </mat-form-field>
-      <button mat-raised-button type="submit" routerLink="">Login</button>
+      <button mat-raised-button type="submit" (click)="loginUser()">Login</button>
     </form>
 
   </mat-card>
