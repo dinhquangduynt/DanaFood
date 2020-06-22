@@ -17,3 +17,6 @@
     object-fit: cover;
     border-radius: 50%;
   }
+  .mat-list-item{
+    margin: 5px 0;
+  }

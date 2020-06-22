@@ -23,7 +23,7 @@ import { PieComponent } from './widgets/pie/pie.component';
     SidebarComponent,
     AreaComponent,
     CardComponent,
-    PieComponent
+    PieComponent,
   ],
   imports: [
     CommonModule,

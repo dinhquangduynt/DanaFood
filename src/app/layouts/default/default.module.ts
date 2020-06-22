@@ -12,12 +12,29 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardService } from 'src/app/modules/dashboard.service';
+import { ProductsComponent } from 'src/app/modules/products/products.component';
+import { OrdersComponent } from 'src/app/modules/orders/orders.component';
+import { LoginComponent } from './login/login.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserModule }    from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { PostItemComponent } from 'src/app/modules/posts/post-item/post-item.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
-    PostsComponent
+    PostsComponent,
+    ProductsComponent,
+    OrdersComponent,
+    LoginComponent,
+    PostItemComponent
   ],
   imports: [
     CommonModule,
@@ -28,10 +45,23 @@ import { DashboardService } from 'src/app/modules/dashboard.service';
     FlexLayoutModule,
     MatCardModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    BrowserModule,
+    HttpClientModule,
+    MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     DashboardService
+  ],
+  entryComponents: [
+    PostItemComponent
   ]
 })
 export class DefaultModule { }
