@@ -15,7 +15,9 @@ namespace ThucPham.Service
         Order GetById(int orderId);
 
         IEnumerable<OrderDetail> GetOrderById(int id);
-        Order Create(ref Order order, List<OrderDetail> orderDetails);
+
+        OrderTotal Add(OrderTotal orders);
+
         void UpdateStatus(int orderId);
 
         Order Delete(int id);
@@ -54,27 +56,6 @@ namespace ThucPham.Service
             return _orderDetailRepository.GetMulti(x => x.OrderID == id);
         }
 
-        public Order Create(ref Order order, List<OrderDetail> orderDetails)
-        {
-            try
-            {
-                _orderRepository.Add(order);
-                _unitOfWork.Commit();
-
-                foreach(var orderDetail in orderDetails)
-                {
-                    orderDetail.OrderID = order.ID;
-                    _orderDetailRepository.Add(orderDetail);
-                }
-
-                return order;
-            }
-            catch(Exception ex)
-            {
-                throw;
-            }
-        }
-
         public Order Delete(int id)
         {
             //var listOrderDetail = _orderDetailRepository.GetMulti(x => x.OrderID == id);
@@ -95,6 +76,30 @@ namespace ThucPham.Service
 
             order.Status = true;
             _orderRepository.Update(order);
+        }
+
+        public OrderTotal Add(OrderTotal orders)
+        {
+            Order order = orders.Order;
+            try
+            {
+                order.CreatedDate = DateTime.Now.Date;
+                _orderRepository.Add(order);
+                _unitOfWork.Commit();
+
+                foreach (var orderDetail in orders.OrderDetails)
+                {
+                    orderDetail.OrderID = order.ID;
+                    _orderDetailRepository.Add(orderDetail);
+                }
+
+                return orders;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
         }
     }
 }

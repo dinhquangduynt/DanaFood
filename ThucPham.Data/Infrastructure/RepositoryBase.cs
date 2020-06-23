@@ -56,11 +56,13 @@ namespace ThucPham.Data.Infrastructure
             return dbSet.Remove(entity);
         }
 
-        public virtual void DeleteMulti(Expression<Func<T, bool>> where)
+        public virtual IEnumerable<T> DeleteMulti(Expression<Func<T, bool>> where)
         {
             IEnumerable<T> objects = dbSet.Where<T>(where).AsEnumerable();
             foreach (T obj in objects)
                 dbSet.Remove(obj);
+
+            return objects.ToList();
         }
 
         public virtual T GetSingleById(int id)
@@ -82,41 +84,50 @@ namespace ThucPham.Data.Infrastructure
         public IEnumerable<T> GetAll(string[] includes = null)
         {
             //HANDLE INCLUDES FOR ASSOCIATED OBJECTS IF APPLICABLE
+            //if (includes != null && includes.Count() > 0)
+            //{
+            //    var query = dataContext.Set<T>().Include(includes.First());
+            //    foreach (var include in includes.Skip(1))
+            //        query = query.Include(include);
+            //    return query.AsQueryable();
+            //}
+
+            //return dataContext.Set<T>().AsQueryable();
+
             if (includes != null && includes.Count() > 0)
             {
-                var query = dataContext.Set<T>().Include(includes.First());
+                var query = dbSet.Include(includes.First());
                 foreach (var include in includes.Skip(1))
                     query = query.Include(include);
                 return query.AsQueryable();
             }
 
-            return dataContext.Set<T>().AsQueryable();
+            return dbSet.AsQueryable();
         }
 
         public T GetSingleByCondition(Expression<Func<T, bool>> expression, string[] includes = null)
         {
             if (includes != null && includes.Count() > 0)
             {
-                var query = dataContext.Set<T>().Include(includes.First());
+                var query = dbSet.Include(includes.First());
                 foreach (var include in includes.Skip(1))
                     query = query.Include(include);
                 return query.FirstOrDefault(expression);
             }
-            return dataContext.Set<T>().FirstOrDefault(expression);
+            return dbSet.FirstOrDefault(expression);
         }
 
         public virtual IEnumerable<T> GetMulti(Expression<Func<T, bool>> predicate, string[] includes = null)
         {
-            //HANDLE INCLUDES FOR ASSOCIATED OBJECTS IF APPLICABLE
             if (includes != null && includes.Count() > 0)
             {
-                var query = dataContext.Set<T>().Include(includes.First());
+                var query = dbSet.Include(includes.First());
                 foreach (var include in includes.Skip(1))
                     query = query.Include(include);
                 return query.Where<T>(predicate).AsQueryable<T>();
             }
 
-            return dataContext.Set<T>().Where<T>(predicate).AsQueryable<T>();
+            return dbSet.Where<T>(predicate).AsQueryable<T>();
         }
 
         //phan trang chua can
@@ -143,7 +154,7 @@ namespace ThucPham.Data.Infrastructure
 
         public bool CheckContains(Expression<Func<T, bool>> predicate)
         {
-            return dataContext.Set<T>().Count<T>(predicate) > 0;
+            return dbSet.Count<T>(predicate) > 0;
         }
         #endregion
     }

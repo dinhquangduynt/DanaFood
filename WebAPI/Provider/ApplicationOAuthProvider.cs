@@ -44,7 +44,8 @@ namespace WebAPI.Provider
             ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
                 CookieAuthenticationDefaults.AuthenticationType);
 
-            AuthenticationProperties properties = CreateProperties(user.UserName, user.Email);
+            AuthenticationProperties properties = CreateProperties(user);
+
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
             context.Request.Context.Authentication.SignIn(cookiesIdentity);
@@ -71,27 +72,33 @@ namespace WebAPI.Provider
             return Task.FromResult<object>(null);
         }
 
-        public override Task ValidateClientRedirectUri(OAuthValidateClientRedirectUriContext context)
-        {
-            if (context.ClientId == _publicClientId)
-            {
-                Uri expectedRootUri = new Uri(context.Request.Uri, "/");
+        //public override Task ValidateClientRedirectUri(OAuthValidateClientRedirectUriContext context)
+        //{
+        //    if (context.ClientId == _publicClientId)
+        //    {
+        //        Uri expectedRootUri = new Uri(context.Request.Uri, "/");
 
-                if (expectedRootUri.AbsoluteUri == context.RedirectUri)
-                {
-                    context.Validated();
-                }
-            }
+        //        if (expectedRootUri.AbsoluteUri == context.RedirectUri)
+        //        {
+        //            context.Validated();
+        //        }
+        //    }
 
-            return Task.FromResult<object>(null);
-        }
+        //    return Task.FromResult<object>(null);
+        //}
 
-        public static AuthenticationProperties CreateProperties(string userName, string email)
+
+        // gui về nhiều than số cho client 
+        public static AuthenticationProperties CreateProperties(User user)
         {
             IDictionary<string, string> data = new Dictionary<string, string>
             {
-                { "userName", userName },
-                { "email", email }
+                { "Username", user.UserName },
+                { "Email", user.Email },
+                { "Fullname", user.UserName },
+                { "Birthday", user.Email },
+                { "Address", user.UserName },
+                { "PhoneNumber", user.Email }
             };
             return new AuthenticationProperties(data);
         }

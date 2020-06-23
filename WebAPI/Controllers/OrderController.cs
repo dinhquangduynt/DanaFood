@@ -11,14 +11,17 @@ using WebAPI.Infrastructure.Extensions;
 namespace WebAPI.Controllers
 {
     [RoutePrefix("api/order")]
-    [Authorize]
+   // [Authorize]
     public class OrderController : ApiController
     {
         IOrderService _orderService;
 
-        public OrderController(IOrderService orderService) : base()
+        IOrderTotalService _orderTotalService;
+
+        public OrderController(IOrderService orderService, IOrderTotalService orderTotalService) : base()
         {
             this._orderService = orderService;
+            this._orderTotalService = orderTotalService;
         }
 
         //client + admin
@@ -95,10 +98,9 @@ namespace WebAPI.Controllers
             return response;
         }
 
-
         [Route("add")]
         [HttpPost]
-        public HttpResponseMessage Add(HttpRequestMessage request,Order order, List<OrderDetail> orderDetail)
+        public HttpResponseMessage Add1(HttpRequestMessage request, OrderTotal order)
         {
             HttpResponseMessage response = null;
             try
@@ -109,7 +111,9 @@ namespace WebAPI.Controllers
                 }
                 else
                 {
-                    var newOrder = _orderService.Create(ref order, orderDetail);
+                    //order.CreatedBy = User.Identity.Name;
+                   //order.CreatedDate = DateTime.Now;
+                    var newOrder = _orderService.Add(order);
                     _orderService.Save();
                     response = request.CreateResponse(HttpStatusCode.Created, newOrder);
                 }
@@ -129,7 +133,8 @@ namespace WebAPI.Controllers
             HttpResponseMessage response = null;
             try
             {
-                var order = _orderService.Delete(id);
+                var order = _orderTotalService.Delete(id);
+                _orderService.Save();
                 response = Request.CreateResponse(HttpStatusCode.OK, order);
             }
             catch (Exception ex)

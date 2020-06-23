@@ -19,7 +19,7 @@ namespace ThucPham.Data.Repositories
 
         public IEnumerable<ProductCategory> GetByAlias(string alias)
         {
-            return this.DbContext.ProductCategories.Where(x => x.Alias == alias);
+            return DbContext.ProductCategories.Where(x => x.Alias == alias);
         }
     }
 }

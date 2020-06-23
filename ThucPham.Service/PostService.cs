@@ -21,7 +21,6 @@ namespace ThucPham.Service
 
         IEnumerable<Post> GetAll(string keyword = null);
 
-        //IEnumerable<Post> GetAllPaging();
 
         IEnumerable<Post> GetAllByTag(string tag);
 
@@ -72,7 +71,7 @@ namespace ThucPham.Service
 
         public IEnumerable<Post> GetAllByCategory(int categoryId)
         {
-            return _postRepository.GetMulti(x =>x.CategoryID == categoryId, new string[] { "PostCategory" });
+            return _postRepository.GetMulti(x =>x.CategoryID == categoryId);
         }
 
         public void Update(Post post)

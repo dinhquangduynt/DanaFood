@@ -109,7 +109,7 @@ namespace WebAPI.Controllers
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
-        [Route("ExternalLogin", Name = "ExternalLogin")]
+        [Route("ExternalLogin")]
         public async Task<IHttpActionResult> GetExternalLogin(string provider)
         {
             if (!User.Identity.IsAuthenticated)
@@ -144,7 +144,7 @@ namespace WebAPI.Controllers
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
-                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName, user.Email);
+                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user);
                 Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
             }
             else
@@ -154,7 +154,7 @@ namespace WebAPI.Controllers
                 Authentication.SignIn(identity);
             }
 
-            return Ok();
+            return Ok(user);
         }
 
 

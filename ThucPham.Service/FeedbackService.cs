@@ -13,6 +13,8 @@ namespace ThucPham.Service
     {
         Feedback Create(Feedback feedback);
 
+        IEnumerable<Feedback> GetAll();
+
         void Save();
     }
 
@@ -30,6 +32,11 @@ namespace ThucPham.Service
         public Feedback Create(Feedback feedback)
         {
             return _feedbackRepository.Add(feedback);
+        }
+
+        public IEnumerable<Feedback> GetAll()
+        {
+            throw new NotImplementedException();
         }
 
         public void Save()
