@@ -15,6 +15,8 @@ namespace ThucPham.Service
 
         IEnumerable<Feedback> GetAll();
 
+        Feedback Update(int id);
+
         void Save();
     }
 
@@ -36,12 +38,23 @@ namespace ThucPham.Service
 
         public IEnumerable<Feedback> GetAll()
         {
-            throw new NotImplementedException();
+            return _feedbackRepository.GetAll();
         }
 
         public void Save()
         {
             _unitOfWork.Commit();
+        }
+
+        public Feedback Update(int id)
+        {
+            var feedback = _feedbackRepository.GetSingleById(id);
+
+            feedback.Status = true;
+
+            _feedbackRepository.Update(feedback);
+
+            return feedback;
         }
     }
 }

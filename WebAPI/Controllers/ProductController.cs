@@ -86,6 +86,24 @@ namespace WebAPI.Controllers
             return response;
         }
 
+
+        [Route("gethot")]
+        [HttpGet]
+        public HttpResponseMessage GetHot(HttpRequestMessage request)
+        {
+            HttpResponseMessage response = null;
+            try
+            {
+                var listProduct = _productService.GetHotProduct();
+                response = request.CreateResponse(HttpStatusCode.OK, listProduct);
+            }
+            catch (Exception ex)
+            {
+                response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+            return response;
+        }
+
         //[Authorize]
         [Route("update")]
         [HttpPut]

@@ -22,7 +22,7 @@ namespace ThucPham.Service
 
         IEnumerable<Product> GetLastest(int top);
 
-        IEnumerable<Product> GetHotProduct(int top);
+        IEnumerable<Product> GetHotProduct();
 
         //phan trang k dung
         IEnumerable<Product> GetAllByCategory(int categoryId);
@@ -156,9 +156,9 @@ namespace ThucPham.Service
             return _productRepository.GetMulti(x => x.Status).OrderByDescending(x => x.CreatedDate).Take(top);
         }
 
-        public IEnumerable<Product> GetHotProduct(int top)
+        public IEnumerable<Product> GetHotProduct()
         {
-            return _productRepository.GetMulti(x => x.Status && x.HotFlag == true).OrderByDescending(x => x.CreatedDate).Take(top);
+            return _productRepository.GetMulti(x =>x.HotFlag == true).OrderByDescending(x => x.CreatedDate);
 
         }
 
