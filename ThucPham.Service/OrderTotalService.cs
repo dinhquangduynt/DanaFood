@@ -12,6 +12,7 @@ namespace ThucPham.Service
     public interface IOrderTotalService
     {
         OrderTotal Delete(int id);
+        OrderTotal GetById(int id);
     }
 
     public class OrderTotalService : IOrderTotalService
@@ -35,6 +36,19 @@ namespace ThucPham.Service
             _unitOfWork.Commit();
 
             Order order = _orderRepository.Delete(id);
+            //_unitOfWork.Commit();
+            orderTotal.Order = order;
+            orderTotal.OrderDetails = orderDetails;
+            return orderTotal;
+        }
+
+        public OrderTotal GetById(int id)
+        {
+            OrderTotal orderTotal = new OrderTotal();
+            Order order = _orderRepository.GetSingleById(id);
+            IEnumerable<OrderDetail> orderDetails = _orderDetailRepository.GetMulti(x => x.OrderID == id);
+
+           
             //_unitOfWork.Commit();
             orderTotal.Order = order;
             orderTotal.OrderDetails = orderDetails;

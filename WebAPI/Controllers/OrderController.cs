@@ -80,6 +80,26 @@ namespace WebAPI.Controllers
             return response;
         }
 
+
+        [Route("getordertotal/{orderId:int}")]
+        [HttpGet]
+        public HttpResponseMessage GetTotal(HttpRequestMessage request, int orderId)
+        {
+            HttpResponseMessage response = null;
+            try
+            {
+                var listOrder = _orderTotalService.GetById(orderId);
+                response = Request.CreateResponse(HttpStatusCode.OK, listOrder);
+            }
+            catch (Exception ex)
+            {
+
+                response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+            return response;
+        }
+
+
         [Route("updatestatus")]
         [HttpPut]
         public HttpResponseMessage Put(HttpRequestMessage request, Order order)
