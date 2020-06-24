@@ -26,9 +26,9 @@ namespace ThucPham.Service
 
         bool AddUserToGroups(IEnumerable<UserGroup> groups, string userId);
 
-        IEnumerable<Group> GetListGroupByUserId(string userId);
+        //IEnumerable<Group> GetListGroupByUserId(string userId);
 
-        IEnumerable<User> GetListUserByGroupId(int groupId);
+        //IEnumerable<User> GetListUserByGroupId(int groupId);
 
         void Save();
     }
@@ -102,14 +102,14 @@ namespace ThucPham.Service
             return true;
         }
 
-        public IEnumerable<Group> GetListGroupByUserId(string userId)
-        {
-            return _appGroupRepository.GetListGroupByUserId(userId);
-        }
+        //public IEnumerable<Group> GetListGroupByUserId(string userId)
+        //{
+        //    return _appGroupRepository.GetListGroupByUserId(userId);
+        //}
 
-        public IEnumerable<User> GetListUserByGroupId(int groupId)
-        {
-            return _appGroupRepository.GetListUserByGroupId(groupId);
-        }
+        //public IEnumerable<User> GetListUserByGroupId(int groupId)
+        //{
+        //    return _appGroupRepository.GetListUserByGroupId(groupId);
+        //}
     }
 }

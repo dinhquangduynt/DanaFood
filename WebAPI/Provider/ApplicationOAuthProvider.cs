@@ -29,6 +29,12 @@ namespace WebAPI.Provider
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
+            var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
+
+            if (allowedOrigin == null) allowedOrigin = "*";
+
+            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
+
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 
             User user = await userManager.FindAsync(context.UserName, context.Password);
@@ -41,11 +47,11 @@ namespace WebAPI.Provider
 
             ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
                OAuthDefaults.AuthenticationType);
+
             ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
                 CookieAuthenticationDefaults.AuthenticationType);
 
             AuthenticationProperties properties = CreateProperties(user);
-
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
             context.Request.Context.Authentication.SignIn(cookiesIdentity);
@@ -72,20 +78,20 @@ namespace WebAPI.Provider
             return Task.FromResult<object>(null);
         }
 
-        //public override Task ValidateClientRedirectUri(OAuthValidateClientRedirectUriContext context)
-        //{
-        //    if (context.ClientId == _publicClientId)
-        //    {
-        //        Uri expectedRootUri = new Uri(context.Request.Uri, "/");
+        public override Task ValidateClientRedirectUri(OAuthValidateClientRedirectUriContext context)
+        {
+            if (context.ClientId == _publicClientId)
+            {
+                Uri expectedRootUri = new Uri(context.Request.Uri, "/");
 
-        //        if (expectedRootUri.AbsoluteUri == context.RedirectUri)
-        //        {
-        //            context.Validated();
-        //        }
-        //    }
+                if (expectedRootUri.AbsoluteUri == context.RedirectUri)
+                {
+                    context.Validated();
+                }
+            }
 
-        //    return Task.FromResult<object>(null);
-        //}
+            return Task.FromResult<object>(null);
+        }
 
 
         // gui về nhiều than số cho client 

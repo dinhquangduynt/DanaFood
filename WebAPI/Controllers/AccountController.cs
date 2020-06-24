@@ -73,38 +73,38 @@ namespace WebAPI.Controllers
 
 
 
-        //[AllowAnonymous]
-        //[Route("login")]
-        //[HttpPost]
-        //public async Task<HttpResponseMessage> Login(HttpRequestMessage request, LoginViewModel model)
-        //{
-        //    HttpResponseMessage response = null;
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-        //    }
+        [AllowAnonymous]
+        [Route("login")]
+        [HttpPost]
+        public async Task<HttpResponseMessage> Login(HttpRequestMessage request, LoginViewModel model)
+        {
+            HttpResponseMessage response = null;
+            if (!ModelState.IsValid)
+            {
+                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
 
-        //    else
-        //    {
-        //        try
-        //        {
-        //            User user = await UserManager.FindAsync(model.Username, model.Password);
-        //            if (user != null)
-        //            {
-        //               ClaimsIdentity identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ExternalBearer);
-        //                response = request.CreateResponse(HttpStatusCode.OK, identity);
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-                  
-        //            response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
-        //        }
+            else
+            {
+                try
+                {
+                    User user = await UserManager.FindAsync(model.Username, model.Password);
+                    if (user != null)
+                    {
+                        ClaimsIdentity identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ExternalBearer);
+                        response = request.CreateResponse(HttpStatusCode.OK, identity);
+                    }
+                }
+                catch (Exception ex)
+                {
 
-        //    }
+                    response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+                }
 
-        //    return response;
-        //}
+            }
+
+            return response;
+        }
 
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]

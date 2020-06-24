@@ -20,7 +20,7 @@ namespace ThucPham.Service
         void Delete(string id);
 
         bool AddRolesToGroup(IEnumerable<RoleGroup> roleGroup, int groupId);
-        IEnumerable<Role> GetListRoleByGroup(int groupId);
+        //IEnumerable<Role> GetListRoleByGroup(int groupId);
 
         void Save();
     }
@@ -84,10 +84,10 @@ namespace ThucPham.Service
          
         }
 
-        public IEnumerable<Role> GetListRoleByGroup(int groupId)
-        {
-            return _roleRepository.GetListRoleGroupId(groupId);
-        }
+        //public IEnumerable<Role> GetListRoleByGroup(int groupId)
+        //{
+        //    return _roleRepository.GetListRoleGroupId(groupId);
+        //}
 
         public void Save()
         {

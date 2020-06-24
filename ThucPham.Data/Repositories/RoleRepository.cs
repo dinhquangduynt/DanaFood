@@ -10,7 +10,7 @@ namespace ThucPham.Data.Repositories
 {
     public interface IRoleRepository : IRepository<Role>
     {
-        IEnumerable<Role> GetListRoleGroupId(int groupId);
+       // IEnumerable<Role> GetListRoleGroupId(int groupId);
     }
     public class RoleRepository : RepositoryBase<Role>, IRoleRepository
     {
@@ -18,14 +18,14 @@ namespace ThucPham.Data.Repositories
         {
         }
 
-        public IEnumerable<Role> GetListRoleGroupId(int groupId)
-        {
-            var query = from r in DbContext.appRoles
-                        join rg in DbContext.RoleGroups
-                        on r.Id equals rg.RoleId
-                        where rg.GroupId == groupId
-                        select r;
-            return query;
-        }
+        //public IEnumerable<Role> GetListRoleGroupId(int groupId)
+        //{
+        //    var query = from r in DbContext.appRoles
+        //                join rg in DbContext.RoleGroups
+        //                on r.Id equals rg.RoleId
+        //                where rg.GroupId == groupId
+        //                select r;
+        //    return query;
+        //}
     }
 }

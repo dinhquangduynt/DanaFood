@@ -34,6 +34,7 @@ namespace WebAPI.App_Start
 
             //enable cors policy
             app.UseCors(CorsOptions.AllowAll);
+
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(WebApiDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
@@ -49,7 +50,7 @@ namespace WebAPI.App_Start
             {
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
-                //AuthorizeEndpointPath = new PathString("/api/account/ExternalLogin"),
+                AuthorizeEndpointPath = new PathString("/api/account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(60),
                 // In production mode set AllowInsecureHttp = false
                 AllowInsecureHttp = true

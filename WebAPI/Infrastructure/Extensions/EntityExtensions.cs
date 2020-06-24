@@ -67,7 +67,7 @@ namespace WebAPI.Infrastructure.Extensions
 
         public static void UpdateProduct(this Product product, Product productVm)
         {
-            product.ID = productVm.ID;
+           // product.ID = productVm.ID;
             product.Name = productVm.Name;
             product.Description = productVm.Description;
             product.Alias = productVm.Alias;

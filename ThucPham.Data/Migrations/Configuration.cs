@@ -9,7 +9,7 @@ namespace ThucPham.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(ThucPham.Data.WebApiDbContext context)

@@ -18,3 +18,8 @@ D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.M
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.csproj.GenerateResource.Cache
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.pdb
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.changDb.resources
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.resetDb.resources
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.changeName.resources
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.bbb.resources
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.change.resources

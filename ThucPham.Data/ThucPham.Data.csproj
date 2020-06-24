@@ -68,6 +68,26 @@
     <Compile Include="Migrations\202006130852512_init.Designer.cs">
       <DependentUpon>202006130852512_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006241643181_changDb.cs" />
+    <Compile Include="Migrations\202006241643181_changDb.Designer.cs">
+      <DependentUpon>202006241643181_changDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006241737448_resetDb.cs" />
+    <Compile Include="Migrations\202006241737448_resetDb.Designer.cs">
+      <DependentUpon>202006241737448_resetDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006241741205_changeName.cs" />
+    <Compile Include="Migrations\202006241741205_changeName.Designer.cs">
+      <DependentUpon>202006241741205_changeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006241821490_bbb.cs" />
+    <Compile Include="Migrations\202006241821490_bbb.Designer.cs">
+      <DependentUpon>202006241821490_bbb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006241837137_change.cs" />
+    <Compile Include="Migrations\202006241837137_change.Designer.cs">
+      <DependentUpon>202006241837137_change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ContactDetailRepository.cs" />
@@ -110,6 +130,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202006130852512_init.resx">
       <DependentUpon>202006130852512_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006241643181_changDb.resx">
+      <DependentUpon>202006241643181_changDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006241737448_resetDb.resx">
+      <DependentUpon>202006241737448_resetDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006241741205_changeName.resx">
+      <DependentUpon>202006241741205_changeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006241821490_bbb.resx">
+      <DependentUpon>202006241821490_bbb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006241837137_change.resx">
+      <DependentUpon>202006241837137_change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

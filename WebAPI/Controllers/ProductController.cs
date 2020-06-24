@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using ThucPham.Model.Models;
 using ThucPham.Service;
@@ -129,10 +133,12 @@ namespace WebAPI.Controllers
             return response;
         }
 
+        
+
         //[Authorize]
         [Route("add")]
         [HttpPost]
-        public async System.Threading.Tasks.Task<HttpResponseMessage> Add(HttpRequestMessage request, Product product)
+        public async Task<HttpResponseMessage> Add(HttpRequestMessage request, Product product)
         {
             HttpResponseMessage response = null;
             try
@@ -143,10 +149,12 @@ namespace WebAPI.Controllers
                 }
                 else
                 {
-
                     var productDb = new Product();
                     // productDb.CreatedBy = User.Identity.Name;
                     // productDb.UpdateProduct(product);
+                    UploadFileController upload = new UploadFileController();
+                    product.Image = await upload.UploadFile();
+
                     product.CreatedDate = DateTime.Now;
                     productDb = _productService.Add(product);
 
@@ -160,6 +168,11 @@ namespace WebAPI.Controllers
                 response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
             }
             return response;
+        }
+
+        private string UploadImage()
+        {
+            throw new NotImplementedException();
         }
 
         //[Authorize]
