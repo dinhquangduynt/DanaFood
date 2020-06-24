@@ -19,7 +19,7 @@ namespace WebAPI.Controllers
         public async Task<string> UploadFile()
         {
             var ctx = HttpContext.Current;
-            var root = ctx.Server.MapPath("~/App_Data");
+            var root = ctx.Server.MapPath("~/Images");
             var provider = new MultipartFileStreamProvider(root);
             try
             {
@@ -34,7 +34,7 @@ namespace WebAPI.Controllers
                     var localfilename = file.LocalFileName;
                     var filePath = Path.Combine(root, name);
                     File.Move(localfilename, filePath);
-                    return filePath.Replace("\\","/");
+                    return filePath;
                 }
             }
             catch (Exception ex)
