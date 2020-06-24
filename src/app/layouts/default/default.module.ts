@@ -21,10 +21,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule }    from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { PostItemComponent } from 'src/app/modules/posts/post-item/post-item.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatDatepickerModule} from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PostshowComponent } from 'src/app/modules/posts/postshow/postshow.component';
+import { DefaultRoutingModule } from './default-routing.module';
+import { PostaddComponent } from 'src/app/modules/posts/postadd/postadd.component';
+import { PosteditComponent } from 'src/app/modules/posts/postedit/postedit.component';
+
+
 
 @NgModule({
   declarations: [
@@ -34,7 +40,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductsComponent,
     OrdersComponent,
     LoginComponent,
-    PostItemComponent
+    PostshowComponent,
+    PostaddComponent,
+    PosteditComponent,
+
   ],
   imports: [
     CommonModule,
@@ -56,12 +65,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
+    DefaultRoutingModule,
+    HttpClientModule,
+
   ],
   providers: [
-    DashboardService
+    DashboardService,
+
   ],
-  entryComponents: [
-    PostItemComponent
-  ]
+  // entryComponents: [
+  //   PosteditComponent,
+  //   PostaddComponent
+  // ]
+
 })
 export class DefaultModule { }

@@ -1,27 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layouts/default/default.module';
-import { PosteditComponent } from './modules/posts/postedit/postedit.component';
-import { PostaddComponent } from './modules/posts/postadd/postadd.component';
+import { PostListshowComponent } from './modules/post-list/post-listshow/post-listshow.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PosteditComponent,
-    PostaddComponent,
+    PostListshowComponent,
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    DefaultModule
+    DefaultModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

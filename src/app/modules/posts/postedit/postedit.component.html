@@ -1,53 +1,37 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="postedit.component.css">
-</head>
-
-<body>
-
-  <h3>Create Product</h3>
+<h3>Update Post Category</h3>
 
   <div class="container">
-    <form>
-      <label for="pname">Product Name</label>
-      <input type="text" id="pname" name="Name" placeholder="Ex: Tôm sú">
+    <form [formGroup] = "editCate" (ngSubmit)="onSubmit()">
+
+      <label for="pname">PostCategory Name</label>
+      <input type="text" id="pname" name="Name" formControlName = "Name">
 
       <label for="alias">Alias Name</label>
-      <input type="text" id="alias" name="Alias" placeholder="Ex: tom su">
+      <input type="text" id="alias" name="Alias" formControlName = "Alias" placeholder="Ex: tom su">
 
-      <label for="category">Category</label>
+      <!-- <label for="category">Category</label>
       <select id="category" name="category">
         <option value="australia">Tôm</option>
         <option value="canada">Sò</option>
-      </select>
+      </select> -->
 
       <label for="url_image">Url Image</label>
-      <input type="text" id="pname" name="Name" placeholder="Ex: https://danafoodapp.com/abc.jpg">
+      <input type="text" id="url" name="Url" formControlName = "Image" placeholder="Ex: https://danafoodapp.com/abc.jpg">
 
-      <input type="file" id="myFile" name="filename">
+      <input type="file" id="myFile" name="filename" (change)="uploadFile($event)">
 
       <label for="description">Description</label>
-      <textarea id="description" name="description" placeholder="Write something.." style="height:200px"></textarea>
+      <textarea id="description" name="description" formControlName = "Description" placeholder="Write something.." style="height:200px"></textarea>
 
-      <div class="checked">
+      <!-- <div class="checked">
         <label for="myCheck">HomeFlag:</label>
         <input type="checkbox" id="myCheck" onclick="myFunction()">
-      </div>
-      <div class="checked">
+      </div> -->
+      <!-- <div class="checked">
         <label for="myCheck">HotFlag:</label>
         <input type="checkbox" id="myCheck" onclick="myFunction()">
-      </div>
+      </div> -->
 
       <input type="submit" value="Submit">
     </form>
   </div>
-
-</body>
-
-</html>
-=======
->>>>>>> build update and add function

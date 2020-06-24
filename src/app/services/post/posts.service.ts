@@ -17,19 +17,23 @@ export class PostsService {
   getPostById(postId : number): Observable<PostCategory> {
     return this.http.get<PostCategory>(this.url + '/getsinglebyid/' + postId);
   }
-  createPost(post: PostCategory): Observable<PostCategory> {
+  createPost(data : any): Observable<PostCategory> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
     return this.http.post<PostCategory>(this.url + '/add',
-    post, httpOptions);
+    data, httpOptions);
   }
-  updatePost(post: PostCategory): Observable<PostCategory> {
+  updatePost(postCate : PostCategory): Observable<PostCategory> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
     return this.http.put<PostCategory>(this.url + '/update',
-    post, httpOptions);
+    postCate, httpOptions);
   }
   deletePostById(postId : number) {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
     return this.http.delete<number>(this.url + '/delete/' + postId, httpOptions);
+  }
+  getDetail(postId : any){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
+    return this.http.get<any>(this.url + '/detail/' + + postId, httpOptions);
   }
   private _listners = new Subject<any>();
   filter(filterBy: string){
