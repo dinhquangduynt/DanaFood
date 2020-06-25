@@ -18,7 +18,6 @@ export class PostshowComponent implements OnInit {
 
   constructor(
     public postCate : PostsService,
-    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {

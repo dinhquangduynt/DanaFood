@@ -6,7 +6,7 @@ export class Order {
         CustomerMobile : string;
         CustomerMessage : string;
         PaymentMethod : string;
-        PaymentStatus : string;
+        PaymentStatus : boolean;
         CreatedDate : Date;
         CreatedBy : string;
         Status : boolean;

@@ -8,11 +8,11 @@ import { PostListshowComponent } from './modules/post-list/post-listshow/post-li
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     PostListshowComponent,
-
 
   ],
   imports: [

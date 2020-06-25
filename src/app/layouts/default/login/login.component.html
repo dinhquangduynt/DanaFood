@@ -3,17 +3,17 @@
     <mat-toolbar>
       <img src="./assets/img/LOGO_DNF.png" alt="">
       Login Page</mat-toolbar>
-    <form class="form" fxLayoutAlign="stretch" fxLayout="column">
+    <form [formGroup]="login" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <mat-label>Username</mat-label>
-        <input matInput placeholder="Enter Username" name="username" [(ngModel)]="loginadmindata.Username">
+        <input matInput placeholder="Enter Username" name="username" formControlName="email">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input type="password" matInput placeholder="Enter Password" name="password" [(ngModel)]="loginadmindata.Password">
+        <input type="password" matInput placeholder="Enter Password" name="password" formControlName="password">
       </mat-form-field>
-      <button mat-raised-button routerLink="/das">Login</button>
+      <button mat-raised-button>Login</button>
     </form>
 
   </mat-card>

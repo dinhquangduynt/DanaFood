@@ -29,6 +29,7 @@ import { PostshowComponent } from 'src/app/modules/posts/postshow/postshow.compo
 import { DefaultRoutingModule } from './default-routing.module';
 import { PostaddComponent } from 'src/app/modules/posts/postadd/postadd.component';
 import { PosteditComponent } from 'src/app/modules/posts/postedit/postedit.component';
+import { OrdershowComponent } from 'src/app/modules/orders/ordershow/ordershow.component';
 
 
 
@@ -43,6 +44,7 @@ import { PosteditComponent } from 'src/app/modules/posts/postedit/postedit.compo
     PostshowComponent,
     PostaddComponent,
     PosteditComponent,
+    OrdershowComponent,
 
   ],
   imports: [
