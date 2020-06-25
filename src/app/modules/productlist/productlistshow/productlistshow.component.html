@@ -1,13 +1,13 @@
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Search box</mat-label>
-    <input type="text" matInput placeholder="enter key word">
-    <button mat-button class="search">
+    <input type="text" matInput placeholder="enter key word" formControlName = "keywork">
+    <button mat-button class="search" type="submit">
       <mat-icon>search</mat-icon>
     </button>
   </mat-form-field>
 </form>
-<a mat-raised-button class="material-icons color_green">+ Add new</a>
+<a mat-raised-button class="material-icons color_green" routerLink="/addpostcate">+ Add new</a>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="ID">
     <th mat-header-cell *matHeaderCellDef> ID </th>
@@ -15,29 +15,32 @@
   </ng-container>
 
 
-  <ng-container matColumnDef="ProductCategoryName">
-    <th mat-header-cell *matHeaderCellDef> Product Category Name </th>
+  <ng-container matColumnDef="ProductName">
+    <th mat-header-cell *matHeaderCellDef> Product Name </th>
     <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="CreatedDate">
-    <th mat-header-cell *matHeaderCellDef> Created Date </th>
-    <td mat-cell *matCellDef="let element"> {{element.CreatedDate}} </td>
-  </ng-container>
-  <ng-container matColumnDef="CreatedBy">
-    <th mat-header-cell *matHeaderCellDef> Created By </th>
-    <td mat-cell *matCellDef="let element"> {{element.CreatedBy}} </td>
-  </ng-container>
   <ng-container matColumnDef="Alias">
     <th mat-header-cell *matHeaderCellDef> Alias </th>
     <td mat-cell *matCellDef="let element"> {{element.Alias}} </td>
   </ng-container>
+
+  <ng-container matColumnDef="CategoryID">
+    <th mat-header-cell *matHeaderCellDef> CategoryID </th>
+    <td mat-cell *matCellDef="let element"> {{element.CategoryID}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Price">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.Price}} VND</td>
+  </ng-container>
+
   <ng-container matColumnDef="Action">
     <th mat-header-cell *matHeaderCellDef> Action </th>
     <mat-cell *matCellDef="let row">
       <button mat-icon-button [routerLink]="['/editpostcate', row.ID]" ><mat-icon>launch</mat-icon></button>
       <button mat-icon-button color="warn" (click)="onDelete(row.ID)"><mat-icon>delete_outline</mat-icon></button>
-      <button mat-icon-button color="primary" matTooltip="Detail about PostCategory" [routerLink]="['/productlist', row.ID]"><mat-icon>info</mat-icon></button>
+      <button mat-icon-button color="primary" matTooltip="Detail about PostCategory" [routerLink]="['/postlist', row.ID]"><mat-icon>info</mat-icon></button>
     </mat-cell>
   </ng-container>
 

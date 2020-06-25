@@ -1,4 +1,4 @@
-<form class="example-form" [formGroup] = "search" (ngSubmit)="onSearch()">
+<form class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Search box</mat-label>
     <input type="text" matInput placeholder="enter key word" formControlName = "keywork">
@@ -31,7 +31,7 @@
     <mat-cell *matCellDef="let row">
       <button mat-icon-button [routerLink]="['/editpostcate', row.ID]" ><mat-icon>launch</mat-icon></button>
       <button mat-icon-button color="warn" (click)="onDelete(row.ID)"><mat-icon>delete_outline</mat-icon></button>
-      <button mat-icon-button color="primary" [routerLink]="['/postlist', row.ID]"><mat-icon>details</mat-icon></button>
+      <button mat-icon-button color="primary" matTooltip="Detail about PostCategory" [routerLink]="['/postlist', row.ID]"><mat-icon>info</mat-icon></button>
     </mat-cell>
   </ng-container>
 

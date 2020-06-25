@@ -21,7 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule }    from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientJsonpModule } from '@angular/common/http';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -31,6 +31,9 @@ import { PostaddComponent } from 'src/app/modules/posts/postadd/postadd.componen
 import { PosteditComponent } from 'src/app/modules/posts/postedit/postedit.component';
 import { OrdershowComponent } from 'src/app/modules/orders/ordershow/ordershow.component';
 import { PostListshowComponent } from 'src/app/modules/post-list/post-listshow/post-listshow.component';
+import { TokenInterceptor } from 'src/app/helpers/token-interceptor';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { ProductlistshowComponent } from 'src/app/modules/productlist/productlistshow/productlistshow.component';
 
 
 
@@ -48,6 +51,7 @@ import { PostListshowComponent } from 'src/app/modules/post-list/post-listshow/p
     PosteditComponent,
     OrdershowComponent,
     PostListshowComponent,
+    ProductlistshowComponent,
 
   ],
   imports: [
@@ -73,10 +77,17 @@ import { PostListshowComponent } from 'src/app/modules/post-list/post-listshow/p
     MatDialogModule,
     DefaultRoutingModule,
     HttpClientModule,
+    HttpClientJsonpModule,
+    MatTooltipModule,
 
   ],
   providers: [
     DashboardService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+    }
 
   ],
   // entryComponents: [

@@ -8,19 +8,22 @@ import { PostaddComponent } from 'src/app/modules/posts/postadd/postadd.componen
 import { PosteditComponent } from 'src/app/modules/posts/postedit/postedit.component';
 import { OrdershowComponent } from 'src/app/modules/orders/ordershow/ordershow.component';
 import { PostListshowComponent } from 'src/app/modules/post-list/post-listshow/post-listshow.component';
+import { AuthGuard } from 'src/app/helpers/login-active.service';
+import { ProductlistshowComponent } from 'src/app/modules/productlist/productlistshow/productlistshow.component';
 
 
 const routes: Routes = [
   { path: '', component: DefaultComponent,
     children: [
-      { path: 'das', component: DashboardComponent },
-      { path: 'products', component: ProductsComponent },
-      { path: 'orders', component: OrdershowComponent },
-      { path: 'posts', component: PostshowComponent },
-      { path: 'addpostcate', component: PostaddComponent },
-      { path: 'editpostcate/:id', component: PosteditComponent },
-      { path: 'postlist/:id', component: PostListshowComponent },
-      { path: 'postitem', component: PostListshowComponent },
+      { path: 'das', component: DashboardComponent,canActivate: [AuthGuard] },
+      { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
+      { path: 'orders', component: OrdershowComponent, canActivate: [AuthGuard] },
+      { path: 'posts', component: PostshowComponent, canActivate: [AuthGuard] },
+      { path: 'addpostcate', component: PostaddComponent, canActivate: [AuthGuard] },
+      { path: 'editpostcate/:id', component: PosteditComponent, canActivate: [AuthGuard] },
+      { path: 'postlist/:id', component: PostListshowComponent, canActivate: [AuthGuard] },
+      { path: 'postitem', component: PostListshowComponent, canActivate: [AuthGuard] },
+      { path: 'productlist/:id', component: ProductlistshowComponent, canActivate: [AuthGuard] },
 
 
     ]

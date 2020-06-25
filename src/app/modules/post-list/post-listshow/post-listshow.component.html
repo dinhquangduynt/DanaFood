@@ -35,7 +35,7 @@
     <mat-cell *matCellDef="let row">
       <button mat-icon-button [routerLink]="['/editpostcate', row.ID]" ><mat-icon>launch</mat-icon></button>
       <button mat-icon-button color="warn" (click)="onDelete(row.ID)"><mat-icon>delete_outline</mat-icon></button>
-      <button mat-icon-button color="primary" [routerLink]="['/postlist', row.ID]"><mat-icon>details</mat-icon></button>
+      <button mat-icon-button color="primary" [routerLink]="['/postlist', row.ID]"><mat-icon>info</mat-icon></button>
     </mat-cell>
   </ng-container>
 
