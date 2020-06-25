@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layouts/default/default.module';
-import { PostListshowComponent } from './modules/post-list/post-listshow/post-listshow.component';
+
 
 
 
@@ -12,7 +12,6 @@ import { PostListshowComponent } from './modules/post-list/post-listshow/post-li
 @NgModule({
   declarations: [
     AppComponent,
-    PostListshowComponent,
 
   ],
   imports: [

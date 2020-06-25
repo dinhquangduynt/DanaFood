@@ -12,7 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class PostshowComponent implements OnInit {
 
   ELEMENT_DATA : PostCategory[];
-  displayedColumns: string[] = ['ID', 'PostCategoryName', 'CreatedDate', 'Action'];
+  displayedColumns: string[] = ['ID', 'PostCategoryName', 'Alias', 'Action'];
   dataSource = new MatTableDataSource<PostCategory>(this.ELEMENT_DATA);
   //PostCategory: any = [];
 

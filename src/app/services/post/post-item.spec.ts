@@ -1,4 +1,4 @@
-import { PostItem } from './post-item';
+import { PostItem } from './post-item.model';
 
 describe('PostItem', () => {
   it('should create an instance', () => {

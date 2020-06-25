@@ -1,35 +1,46 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { PostItem } from './post-item';
+import { Observable, Subject } from 'rxjs';
+import { PostItem } from './post-item.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostsService {
+export class PostItemService {
   url =  'https://danafoodapp.azurewebsites.net/api/post';
   constructor(private http: HttpClient) { }
+  formData : PostItem;
   getAllPosts(): Observable<PostItem[]> {
     return this.http.get<PostItem[]>(this.url + '/getall');
   }
-  getPostById(postId): Observable<PostItem> {
-    return this.http.get<PostItem>(this.url + '/getsinglebyid' + postId);
+  getAllPostByCategory(postId : any): Observable<PostItem[]> {
+    return this.http.get<PostItem[]>(this.url + '/getallbycategory/' + postId);
   }
-  createPost(post: PostItem): Observable<PostItem> {
+  getPostById(postId : any): Observable<PostItem> {
+    return this.http.get<PostItem>(this.url + '/getsinglebyid/' + postId);
+  }
+  createPost(data : any): Observable<PostItem> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
     return this.http.post<PostItem>(this.url + '/add',
-    post, httpOptions);
+    data, httpOptions);
   }
-  updatePost(post: PostItem): Observable<PostItem> {
+  updatePost(postCate : PostItem): Observable<PostItem> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
     return this.http.put<PostItem>(this.url + '/update',
-    post, httpOptions);
+    postCate, httpOptions);
   }
-  deletePostById(postId) {
+  deletePostById(postId : number) {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
-    return this.http.delete<number>(this.url + '/delete?id=' + postId,
- httpOptions);
+    return this.http.delete<number>(this.url + '/delete/' + postId, httpOptions);
+  }
+  getDetail(postId : any){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
+    return this.http.get<any>(this.url + '/detail/' + + postId, httpOptions);
+  }
+  private _listners = new Subject<any>();
+  filter(filterBy: string){
+    this._listners.next(filterBy);
   }
 }

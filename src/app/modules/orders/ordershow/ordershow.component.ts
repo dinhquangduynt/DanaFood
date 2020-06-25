@@ -12,27 +12,27 @@ import { MatDialog } from '@angular/material/dialog';
 export class OrdershowComponent implements OnInit {
 
   ELEMENT_DATA : Order[];
-  displayedColumns: string[] = ['ID', 'CustomerName ', 'CustomerAddress', 'CustomerEmail','CustomerMobile','PaymentMethod','Status','Action'];
+  displayedColumns: string[] = ['ID', 'CustomerName', 'CustomerAddress', 'CustomerEmail','CustomerMobile','Action'];
   dataSource = new MatTableDataSource<Order>(this.ELEMENT_DATA);
-  //Order: any = [];
+  //PostCategory: any = [];
 
   constructor(
-    public orderservice : OrdersService,
+    public postCate : OrdersService,
   ) { }
 
   ngOnInit() {
-    this.loadOrder()
+    this.loadPosts()
   }
 
-  public loadOrder() {
-    let productcate = this.orderservice.getAllOrders();
-    productcate.subscribe(orderItem => this.dataSource.data = orderItem as Order[]);
+  public loadPosts() {
+    let productcate = this.postCate.getAllOrders();
+    productcate.subscribe(postCateItem => this.dataSource.data = postCateItem as Order[]);
   }
 
   onDelete(id : number) {
     if (window.confirm('Are you sure, you want to delete?')){
-      this.orderservice.deleteOrderById(id).subscribe(data => {
-        this.loadOrder()
+      this.postCate.deleteOrderById(id).subscribe(data => {
+        this.loadPosts()
       })
     }
   }
