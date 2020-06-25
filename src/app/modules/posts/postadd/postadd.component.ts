@@ -35,13 +35,13 @@ export class PostaddComponent implements OnInit {
     this.imageObj = FILE;
   }
   onSubmit(){
-    // const imageForm = new FormData();
-    // imageForm.append('image', this.imageObj);
-    // const id = this.route.snapshot.paramMap.get('id');
+  //  const imageForm = new FormData();
+  //    imageForm.append('image', this.imageObj);
+  //   const id = this.route.snapshot.paramMap.get('id');
 
-    // this.postcateservice.upload(imageForm).subscribe(
-    //   (response: any) => {
-        //this.editCate.value.logo = response.data._id;
+  //    this.postcateservice.upload(imageForm).subscribe(
+  //     (response: any) => {
+  //       this.editCate.value.logo = response.data._id;
         this.postcateservice.createPost(this.addCate.value).subscribe((data: any) => {
           this.router.navigateByUrl('posts');
       (error: HttpErrorResponse) => {

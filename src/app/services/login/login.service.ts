@@ -1,5 +1,7 @@
+import { map } from 'highcharts';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,21 +9,17 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 export class LoginService {
 
   private url = "https://danafoodapp.azurewebsites.net";
+  //private url = "http://localhost:50094/token";
 
   constructor(private http: HttpClient) { }
   login(username, password){
-    const headers = {
-      'Content-type': 'application/x-www-form-urlencoded',
-      // 'Access-Control-Allow-Origin': '*',
-      // 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      // 'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
-    }
-    const body =  new HttpParams()
-      .set('username', username)
-      .set('password', password)
-      .set('grant_type', 'password');
 
-    return this.http.post(this.url + '/token', body, {headers});
+     let headers = new HttpHeaders({
+      'Content-type': 'application/x-www-form-urlencoded'
+    });
+    var body =  new HttpParams().set('UserName', username).set('Password', password).set('grant_type', "password");
+
+    return this.http.post(this.url + '/token', body, {headers: headers});
 
 
   //   //let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
@@ -48,5 +46,19 @@ export class LoginService {
       //     .set('Content-Type', 'application/x-www-form-urlencoded')
 
       // }
+  }
+
+  login2(username: string, password: string): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    let body = new URLSearchParams();
+    body.set('username', username);
+    body.set('password', password);
+    body.set('grant_type', "password");
+    body.set('client_id', "angular.client");
+    body.set('client_secret', "secret");
+
+    return this.http.post<any>(this.url + '/token', body.toString(), {
+      headers: headers
+    });
   }
 }
