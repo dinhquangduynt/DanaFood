@@ -17,6 +17,9 @@ export class PostsService {
   getPostById(postId : number): Observable<PostCategory> {
     return this.http.get<PostCategory>(this.url + '/getsinglebyid/' + postId);
   }
+  searchByKeyword(keyword : string): Observable<PostCategory[]> {
+    return this.http.get<PostCategory[]>(this.url + '/getall/' + keyword);
+  }
   createPost(data : any): Observable<PostCategory> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
     return this.http.post<PostCategory>(this.url + '/add',

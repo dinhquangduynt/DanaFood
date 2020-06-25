@@ -28,22 +28,6 @@ export class PostshowComponent implements OnInit {
     let productcate = this.postCate.getAllPosts();
     productcate.subscribe(postCateItem => this.dataSource.data = postCateItem as PostCategory[]);
   }
-  // onEdit(postcate : PostCategory){
-  //   this.postCate.formData = postcate;
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   dialogConfig.autoFocus= true;
-  //   dialogConfig.width= "70%";
-  //   this.dialog.open(PostaddComponent, dialogConfig);
-  // }
-  //  onCreate() {
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   dialogConfig.autoFocus= true;
-  //   dialogConfig.width= "70%";
-  //   this.dialog.open(PostaddComponent, dialogConfig);
-  //  }
-
   onDelete(id : number) {
     if (window.confirm('Are you sure, you want to delete?')){
       this.postCate.deletePostById(id).subscribe(data => {
