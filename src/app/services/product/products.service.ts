@@ -16,6 +16,10 @@ export class ProductsService {
   getProductById(productId : number): Observable<ProductCategory> {
     return this.http.get<ProductCategory>(this.url + '/getsinglebyid/' + productId);
   }
+  getDetail(productId : any){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
+    return this.http.get<any>(this.url + '/detail/' + productId, httpOptions);
+  }
   createProduct(product: ProductCategory): Observable<ProductCategory> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
     return this.http.post<ProductCategory>(this.url + '/add',

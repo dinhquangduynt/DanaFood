@@ -1,0 +1,38 @@
+<h3>Update Post</h3>
+
+  <div class="container">
+    <form [formGroup] = "editPost" (ngSubmit)="onSubmit()">
+
+      <label for="pname">Post Name</label>
+      <input type="text" id="pname" name="Name" formControlName = "Name">
+
+      <label for="alias">Alias Name</label>
+      <input type="text" id="alias" name="Alias" formControlName = "Alias" placeholder="Ex: tom su">
+
+      <!-- <label for="category">Category</label>
+      <select id="category" name="category">
+        <option value="australia">Tôm</option>
+        <option value="canada">Sò</option>
+      </select> -->
+
+      <label for="url_image">Url Image</label>
+      <input type="text" id="url" name="Url" formControlName = "Image" placeholder="Ex: https://danafoodapp.com/abc.jpg">
+
+      <input type="file" id="myFile" name="filename" (change)="uploadFile($event)">
+
+      <label for="description">Description</label>
+      <textarea id="description" name="description" formControlName = "Description" placeholder="Write something.." style="height:200px"></textarea>
+
+      <!-- <div class="checked">
+        <label for="myCheck">HomeFlag:</label>
+        <input type="checkbox" id="myCheck" onclick="myFunction()">
+      </div> -->
+      <!-- <div class="checked">
+        <label for="myCheck">HotFlag:</label>
+        <input type="checkbox" id="myCheck" onclick="myFunction()">
+      </div> -->
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+

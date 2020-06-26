@@ -1,0 +1,43 @@
+<h3>Add Order</h3>
+
+  <div class="container">
+    <form [formGroup] = "addorder" (ngSubmit)="onSubmit()">
+
+      <label for="pname">Customer Name</label>
+      <input type="text" id="pname" name="Name" formControlName = "CustomerName">
+
+      <label for="alias"> Customer Address</label>
+      <input type="text" id="alias" formControlName = "CustomerAddress">
+
+      <!-- <label for="category">Category</label>
+      <select id="category" name="category">
+        <option value="australia">Tôm</option>
+        <option value="canada">Sò</option>
+      </select> -->
+
+      <label for="url_image">Customer Email</label>
+      <input type="text" id="url"  formControlName = "CustomerEmail" placeholder="Ex: https://danafoodapp.com/abc.jpg">
+
+      <input type="file" id="myFile" (change)="uploadFile($event)">
+
+      <label for="url_image">Customer Mobile</label>
+      <input type="text" id="url" name="Url" formControlName = "CustomerMobile" placeholder="Ex: https://danafoodapp.com/abc.jpg">
+
+      <label for="url_image">Payment Method</label>
+      <input type="text" id="url" name="Url" formControlName = "PaymentMethod" placeholder="Ex: https://danafoodapp.com/abc.jpg">
+
+
+      <!-- <div class="checked">
+        <label for="myCheck">HomeFlag:</label>
+        <input type="checkbox" id="myCheck" onclick="myFunction()">
+      </div> -->
+       <!-- <div class="checked">
+        <label for="myCheck">Status:</label>
+        <input type="checkbox" id="myCheck" onclick="myFunction()">
+      </div> -->
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+

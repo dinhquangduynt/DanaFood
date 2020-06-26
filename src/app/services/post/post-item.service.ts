@@ -18,8 +18,11 @@ export class PostItemService {
   getAllPostByCategory(postId : any): Observable<PostItem[]> {
     return this.http.get<PostItem[]>(this.url + '/getallbycategory/' + postId);
   }
-  getPostById(postId : any): Observable<PostItem> {
+  getPostById(postId : number): Observable<PostItem> {
     return this.http.get<PostItem>(this.url + '/getsinglebyid/' + postId);
+  }
+  searchByKeyword(keyword : string): Observable<PostItem[]> {
+    return this.http.get<PostItem[]>(this.url + '/getall/' + keyword);
   }
   createPost(data : any): Observable<PostItem> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
@@ -37,7 +40,7 @@ export class PostItemService {
   }
   getDetail(postId : any){
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
-    return this.http.get<any>(this.url + '/detail/' + + postId, httpOptions);
+    return this.http.get<any>(this.url + '/detail/' + postId, httpOptions);
   }
   private _listners = new Subject<any>();
   filter(filterBy: string){

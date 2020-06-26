@@ -34,7 +34,7 @@ export class OrdersService {
   }
   getDetail(OrderId : any){
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
-    return this.http.get<any>(this.url + '/detail/' + OrderId, httpOptions);
+    return this.http.get<any>(this.url + '/getbyid/' + OrderId, httpOptions);
   }
   private _listners = new Subject<any>();
   filter(filterBy: string){

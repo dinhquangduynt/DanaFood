@@ -34,6 +34,18 @@ import { PostListshowComponent } from 'src/app/modules/post-list/post-listshow/p
 import { TokenInterceptor } from 'src/app/helpers/token-interceptor';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { ProductlistshowComponent } from 'src/app/modules/productlist/productlistshow/productlistshow.component';
+import { UsershowComponent } from 'src/app/modules/user/usershow/usershow.component';
+import { FeedbackComponent } from 'src/app/modules/feedback/feedback.component';
+import { PostlistDetailComponent } from 'src/app/modules/post-list/postlist-detail/postlist-detail.component';
+import { AdminManagementComponent } from 'src/app/modules/user/admin-management/admin-management.component';
+import { PostlistEditComponent } from 'src/app/modules/post-list/postlist-edit/postlist-edit.component';
+import { PostlistAddComponent } from 'src/app/modules/post-list/postlist-add/postlist-add.component';
+import { ProductshowComponent } from 'src/app/modules/products/productshow/productshow.component';
+import { ProductaddComponent } from 'src/app/modules/products/productadd/productadd.component';
+import { ProducteditComponent } from 'src/app/modules/products/productedit/productedit.component';
+import { OrderaddComponent } from 'src/app/modules/orders/orderadd/orderadd.component';
+import { OrdereditComponent } from 'src/app/modules/orders/orderedit/orderedit.component';
+import { OrderdetailComponent } from 'src/app/modules/orders/orderdetail/orderdetail.component';
 
 
 
@@ -52,6 +64,19 @@ import { ProductlistshowComponent } from 'src/app/modules/productlist/productlis
     OrdershowComponent,
     PostListshowComponent,
     ProductlistshowComponent,
+    UsershowComponent,
+    FeedbackComponent,
+    PostlistDetailComponent,
+    AdminManagementComponent,
+    PostlistEditComponent,
+    PostlistAddComponent,
+    ProductshowComponent,
+    ProductaddComponent,
+    ProducteditComponent,
+    OrdershowComponent,
+    OrderaddComponent,
+    OrdereditComponent,
+    OrderdetailComponent,
 
   ],
   imports: [
