@@ -17,6 +17,7 @@ import { ProductaddComponent } from 'src/app/modules/products/productadd/product
 import { OrdereditComponent } from 'src/app/modules/orders/orderedit/orderedit.component';
 import { PostlistAddComponent } from 'src/app/modules/post-list/postlist-add/postlist-add.component';
 import { ProductlisteditComponent } from 'src/app/modules/productlist/productlistedit/productlistedit.component';
+import { FeedbackComponent } from 'src/app/modules/feedback/feedback.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: 'products', component: ProductshowComponent, canActivate: [AuthGuard] },
       { path: 'orders', component: OrdershowComponent, canActivate: [AuthGuard] },
       { path: 'posts', component: PostshowComponent, canActivate: [AuthGuard] },
+      { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] },
       { path: 'addpostcate', component: PostaddComponent, canActivate: [AuthGuard] },
       { path: 'addproduct', component: ProductaddComponent, canActivate: [AuthGuard] },
      // { path: 'addorder', component: OrderaddComponent, canActivate: [AuthGuard] },
