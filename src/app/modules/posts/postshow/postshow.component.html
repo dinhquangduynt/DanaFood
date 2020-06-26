@@ -1,10 +1,8 @@
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Search box</mat-label>
-    <input type="text" matInput placeholder="enter key word" formControlName = "keywork">
-    <button mat-button class="search" type="submit">
-      <mat-icon>search</mat-icon>
-    </button>
+    <input type="text" matInput (keyup)="applyFilter($event.target.value)" placeholder="enter key word" formControlName = "keywork">
+
   </mat-form-field>
 </form>
 <a mat-raised-button class="material-icons color_green" routerLink="/addpostcate">+ Add new</a>

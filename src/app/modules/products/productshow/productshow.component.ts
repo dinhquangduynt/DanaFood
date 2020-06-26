@@ -15,6 +15,9 @@ export class ProductshowComponent implements OnInit {
   displayedColumns: string[] = ['ID', 'ProductCategoryName', 'CreatedDate', 'CreatedBy','Alias', 'Action'];
   dataSource = new MatTableDataSource<ProductCategory>(this.ELEMENT_DATA);
   //ProductCategory: any = [];
+  applyFilter(filterValue: string){
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   constructor(
     public ProductCate : ProductsService,

@@ -15,7 +15,9 @@ export class OrdershowComponent implements OnInit {
   displayedColumns: string[] = ['ID', 'CustomerName', 'CustomerAddress', 'CustomerEmail','CustomerMobile','Action'];
   dataSource = new MatTableDataSource<Order>(this.ELEMENT_DATA);
   //PostCategory: any = [];
-
+  applyFilter(filterValue: string){
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   constructor(
     public postCate : OrdersService,
   ) { }

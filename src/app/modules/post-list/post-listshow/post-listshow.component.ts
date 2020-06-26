@@ -15,6 +15,9 @@ export class PostListshowComponent implements OnInit {
   displayedColumns: string[] = ['ID', 'Name', 'Alias', 'CategoryID', 'Action'];
   dataSource = new MatTableDataSource<PostItem>(this.ELEMENT_DATA);
   //PostCategory: any = [];
+  applyFilter(filterValue: string){
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   constructor(
     public postCate : PostItemService,
