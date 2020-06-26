@@ -24,6 +24,7 @@ export class OrderaddComponent implements OnInit {
       CustomerEmail : [''],
       CustomerMobile : [''],
       PaymentMethod : [''],
+      Status : false,
     })
   }
   imageObj: File;

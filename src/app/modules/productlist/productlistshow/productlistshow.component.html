@@ -35,23 +35,27 @@
   <ng-container matColumnDef="Price">
     <th mat-header-cell *matHeaderCellDef> Price </th>
     <td mat-cell *matCellDef="let element"> {{element.Price}} VND</td>
-  </ng-container> 
+  </ng-container>
 
   <ng-container matColumnDef="Description">
     <th class="content_des" mat-header-cell *matHeaderCellDef> Description </th>
     <td class="truncated" mat-cell *matCellDef="let element"> {{element.Description}}</td>
-  </ng-container> 
+  </ng-container>
 
   <ng-container matColumnDef="Content">
     <th class="content_des" mat-header-cell *matHeaderCellDef> Content </th>
     <td class="truncated" mat-cell *matCellDef="let element"> {{element.Content}}</td>
-  </ng-container> 
+  </ng-container>
 
   <ng-container matColumnDef="Action">
     <th mat-header-cell *matHeaderCellDef> Action </th>
     <mat-cell *matCellDef="let row">
-      <button mat-icon-button [routerLink]="['/editpostcate', row.ID]" ><mat-icon>launch</mat-icon></button>
+      <button mat-icon-button  [routerLink]="['/editproductlist', row.ID]"><mat-icon>launch</mat-icon></button>
       <button mat-icon-button color="warn" (click)="onDelete(row.ID)"><mat-icon>delete_outline</mat-icon></button>
+<<<<<<< HEAD
+=======
+      <button mat-icon-button color="primary" matTooltip="Detail about PostCategory"><mat-icon>info</mat-icon></button>
+>>>>>>> CRUD for tables continue
     </mat-cell>
   </ng-container>
 

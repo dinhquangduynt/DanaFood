@@ -46,6 +46,8 @@ import { ProducteditComponent } from 'src/app/modules/products/productedit/produ
 import { OrderaddComponent } from 'src/app/modules/orders/orderadd/orderadd.component';
 import { OrdereditComponent } from 'src/app/modules/orders/orderedit/orderedit.component';
 import { OrderdetailComponent } from 'src/app/modules/orders/orderdetail/orderdetail.component';
+import { ProductlistaddComponent } from 'src/app/modules/productlist/productlistadd/productlistadd.component';
+import { ProductlisteditComponent } from 'src/app/modules/productlist/productlistedit/productlistedit.component';
 
 
 
@@ -77,6 +79,8 @@ import { OrderdetailComponent } from 'src/app/modules/orders/orderdetail/orderde
     OrderaddComponent,
     OrdereditComponent,
     OrderdetailComponent,
+    ProductlistaddComponent,
+    ProductlisteditComponent,
 
   ],
   imports: [
