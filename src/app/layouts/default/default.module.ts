@@ -43,9 +43,7 @@ import { PostlistAddComponent } from 'src/app/modules/post-list/postlist-add/pos
 import { ProductshowComponent } from 'src/app/modules/products/productshow/productshow.component';
 import { ProductaddComponent } from 'src/app/modules/products/productadd/productadd.component';
 import { ProducteditComponent } from 'src/app/modules/products/productedit/productedit.component';
-import { OrderaddComponent } from 'src/app/modules/orders/orderadd/orderadd.component';
 import { OrdereditComponent } from 'src/app/modules/orders/orderedit/orderedit.component';
-import { OrderdetailComponent } from 'src/app/modules/orders/orderdetail/orderdetail.component';
 import { ProductlistaddComponent } from 'src/app/modules/productlist/productlistadd/productlistadd.component';
 import { ProductlisteditComponent } from 'src/app/modules/productlist/productlistedit/productlistedit.component';
 
@@ -76,9 +74,7 @@ import { ProductlisteditComponent } from 'src/app/modules/productlist/productlis
     ProductaddComponent,
     ProducteditComponent,
     OrdershowComponent,
-    OrderaddComponent,
     OrdereditComponent,
-    OrderdetailComponent,
     ProductlistaddComponent,
     ProductlisteditComponent,
 
@@ -111,7 +107,7 @@ import { ProductlisteditComponent } from 'src/app/modules/productlist/productlis
 
   ],
   providers: [
-    DashboardService,
+    //DashboardService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

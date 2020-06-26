@@ -4,7 +4,7 @@
     <input type="text" matInput (keyup)="$event.target.value" placeholder="enter key word">
   </mat-form-field>
 </form>
-<a mat-raised-button class="material-icons color_green" routerLink="/addorder" >+ Add new</a>
+<!-- <a mat-raised-button class="material-icons color_green" >+ Add new</a> -->
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="ID">
     <th mat-header-cell *matHeaderCellDef> ID </th>
@@ -52,7 +52,6 @@
     <mat-cell *matCellDef="let row">
       <button mat-icon-button [routerLink]="['/editorder', row.ID]" ><mat-icon>launch</mat-icon></button>
       <button mat-icon-button color="warn" (click)="onDelete(row.ID)"><mat-icon>delete_outline</mat-icon></button>
-      <button mat-icon-button color="primary"><mat-icon>info</mat-icon></button>
     </mat-cell>
   </ng-container>
 

@@ -15,7 +15,6 @@ import { ProductshowComponent } from 'src/app/modules/products/productshow/produ
 import { ProducteditComponent } from 'src/app/modules/products/productedit/productedit.component';
 import { ProductaddComponent } from 'src/app/modules/products/productadd/productadd.component';
 import { OrdereditComponent } from 'src/app/modules/orders/orderedit/orderedit.component';
-import { OrderaddComponent } from 'src/app/modules/orders/orderadd/orderadd.component';
 import { PostlistAddComponent } from 'src/app/modules/post-list/postlist-add/postlist-add.component';
 import { ProductlisteditComponent } from 'src/app/modules/productlist/productlistedit/productlistedit.component';
 
@@ -29,7 +28,7 @@ const routes: Routes = [
       { path: 'posts', component: PostshowComponent, canActivate: [AuthGuard] },
       { path: 'addpostcate', component: PostaddComponent, canActivate: [AuthGuard] },
       { path: 'addproduct', component: ProductaddComponent, canActivate: [AuthGuard] },
-      { path: 'addorder', component: OrderaddComponent, canActivate: [AuthGuard] },
+     // { path: 'addorder', component: OrderaddComponent, canActivate: [AuthGuard] },
       { path: 'addpostlist', component: PostlistAddComponent, canActivate: [AuthGuard] },
       { path: 'editpostcate/:id', component: PosteditComponent, canActivate: [AuthGuard] },
       { path: 'editorder/:id', component: OrdereditComponent, canActivate: [AuthGuard] },
