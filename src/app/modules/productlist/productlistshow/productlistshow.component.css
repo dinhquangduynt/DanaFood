@@ -15,4 +15,13 @@ table {
 .material-icons.color_green {
   color: #31a531;
 }
-
+img {
+  width: 100px;
+  height: 100px;
+}
+.content_des{
+  width: 200px;
+}
+.truncated{
+  padding-right: 10px;
+}

@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductlistshowComponent implements OnInit {
 
   ELEMENT_DATA : ProductItem[];
-  displayedColumns: string[] = ['ID', 'ProductName', 'Alias','CategoryID','Price','Action'];
+  displayedColumns: string[] = ['ID', 'ProductName', 'Alias','CategoryID','Image','Price','Description','Content','Action'];
   dataSource = new MatTableDataSource<ProductItem>(this.ELEMENT_DATA);
   //PostCategory: any = [];
 
