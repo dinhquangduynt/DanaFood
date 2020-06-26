@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductCategory } from 'src/app/services/product/product.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductsService } from 'src/app/services/product/products.service';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-productshow',
@@ -24,8 +27,13 @@ export class ProductshowComponent implements OnInit {
     private dialog: MatDialog,
   ) { }
 
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   ngOnInit() {
     this.loadProducts()
+    this.dataSource.sort = this.sort
+    this.dataSource.paginator = this.paginator
   }
 
   public loadProducts() {
