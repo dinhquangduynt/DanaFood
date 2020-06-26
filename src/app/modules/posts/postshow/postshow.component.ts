@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PostsService } from 'src/app/services/post/posts.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PostCategory } from 'src/app/services/post/post.model';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-postshow',
@@ -14,6 +16,9 @@ export class PostshowComponent implements OnInit {
   ELEMENT_DATA : PostCategory[];
   displayedColumns: string[] = ['ID', 'PostCategoryName', 'Alias', 'Action'];
   dataSource = new MatTableDataSource<PostCategory>(this.ELEMENT_DATA);
+
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   //PostCategory: any = [];
   applyFilter(filterValue: string){
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -25,6 +30,8 @@ export class PostshowComponent implements OnInit {
 
   ngOnInit() {
     this.loadPosts()
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   public loadPosts() {

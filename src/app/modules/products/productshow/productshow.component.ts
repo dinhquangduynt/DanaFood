@@ -17,6 +17,9 @@ export class ProductshowComponent implements OnInit {
   ELEMENT_DATA : ProductCategory[];
   displayedColumns: string[] = ['ID', 'ProductCategoryName', 'CreatedDate', 'CreatedBy','Alias', 'Action'];
   dataSource = new MatTableDataSource<ProductCategory>(this.ELEMENT_DATA);
+
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   //ProductCategory: any = [];
   applyFilter(filterValue: string){
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -27,13 +30,12 @@ export class ProductshowComponent implements OnInit {
     private dialog: MatDialog,
   ) { }
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  
 
   ngOnInit() {
     this.loadProducts()
-    this.dataSource.sort = this.sort
-    this.dataSource.paginator = this.paginator
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   public loadProducts() {

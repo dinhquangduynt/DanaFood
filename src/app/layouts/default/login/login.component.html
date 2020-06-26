@@ -1,20 +1,22 @@
 <div fxLayoutAlign="center center" fxFlexFill class="container">
   <mat-card fxFlex="25">
-    <mat-toolbar>
-      <img src="./assets/img/LOGO_DNF.png" alt="">
-      Login Page</mat-toolbar>
-    <form [formGroup]="login" (ngSubmit)="onSubmit()">
-      <mat-form-field>
-        <mat-label>Username</mat-label>
-        <input matInput placeholder="Enter Username" name="username" formControlName="email">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input type="password" matInput placeholder="Enter Password" name="password" formControlName="password">
-      </mat-form-field>
-      <button mat-raised-button>Login</button>
-    </form>
-
+    <mat-toolbar class="toolbar">
+        <img src="./assets/img/LOGO_DNF.png" alt="">
+        <p class="login_title">DANAFOOD</p>
+    </mat-toolbar>
+    <div class="sign_in">
+      <form [formGroup]="login" (ngSubmit)="onSubmit()">
+        <mat-form-field class="mat-form">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Enter Username" name="username" formControlName="email">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="mat-form">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput placeholder="Enter Password" name="password" formControlName="password">
+        </mat-form-field> <br>
+        <button class="login_button" mat-raised-button>Login</button>
+      </form>
+    </div>
   </mat-card>
 </div>
