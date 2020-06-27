@@ -48,6 +48,26 @@ namespace WebAPI.Controllers
         }
 
 
+        [Route("getbyid/{id:int}")]
+        [HttpGet]
+
+        public HttpResponseMessage GetByID(HttpRequestMessage request, int id)
+        {
+            HttpResponseMessage response = null;
+            try
+            {
+                var listFeedback = _feedbackService.GetByID(id);
+                response = request.CreateResponse(HttpStatusCode.OK, listFeedback);
+            }
+            catch (Exception ex)
+            {
+
+                response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            return response;
+        }
+
+
         [Route("add")]
         [HttpPost]
 
@@ -97,8 +117,6 @@ namespace WebAPI.Controllers
                 {
                     response = request.CreateErrorResponse(HttpStatusCode.BadRequest, "Fail");
                 }
-                
-                
             }
             catch (Exception ex)
             {

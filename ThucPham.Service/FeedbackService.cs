@@ -17,6 +17,8 @@ namespace ThucPham.Service
 
         Feedback Update(int id);
 
+        Feedback GetByID(int id);
+
         void Save();
     }
 
@@ -57,6 +59,11 @@ namespace ThucPham.Service
             _feedbackRepository.Update(feedback);
 
             return feedback;
+        }
+
+        public Feedback GetByID(int id)
+        {
+            return _feedbackRepository.GetSingleById(id);
         }
     }
 }
