@@ -20,6 +20,7 @@ using WebAPI.Provider;
 using WebAPI.Results;
 using ThucPham.Common;
 using ThucPham.Data.Repositories;
+using WebAPI.Infrastructure.Extensions;
 
 namespace WebAPI.Controllers
 {
@@ -234,6 +235,67 @@ namespace WebAPI.Controllers
         }
 
 
+        [Route("update")]
+        [HttpPut]
+        [Authorize]
+        public async Task<HttpResponseMessage> Update(HttpRequestMessage request, RegisterViewModel userViewModel )
+        {
+            HttpResponseMessage response = null;
+            var user = await UserManager.FindByEmailAsync(userViewModel.Email);
+            try
+            {
+                user.UpdateUser(userViewModel);
+
+                user.PasswordHash = UserManager.PasswordHasher.HashPassword(userViewModel.Password);
+
+                var result = UserManager.Update(user);
+                response = request.CreateResponse(HttpStatusCode.OK, userViewModel);
+            }
+            catch (Exception ex)
+            {
+
+                response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+
+            return response;
+        }
+
+        [Route("updatepass/{pass}")]
+        [HttpPut]
+        [Authorize]
+        public async Task<HttpResponseMessage> UpdatePass(HttpRequestMessage request, string pass)
+        {
+            HttpResponseMessage response = null;
+            string name = User.Identity.Name;
+            var user = await UserManager.FindByNameAsync(name);
+            try
+            {
+               // user.UpdateUser(userViewModel);
+
+                user.PasswordHash = UserManager.PasswordHasher.HashPassword(pass);
+
+                var result = UserManager.Update(user);
+                RegisterViewModel userViewModel = new RegisterViewModel()
+                {
+                    FullName = user.FullName,
+                    BirthDay = (DateTime)user.BirthDay,
+                    Address = user.Address,
+                    PhoneNumber = user.PhoneNumber,
+                    Email = user.PhoneNumber,
+                    Password = user.PasswordHash,
+                };
+                response = request.CreateResponse(HttpStatusCode.OK, userViewModel);
+            }
+            catch (Exception ex)
+            {
+
+                response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+
+            return response;
+        }
 
         private class ExternalLoginData
         {

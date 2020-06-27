@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using ThucPham.Model.Models;
+using WebAPI.Models;
 
 namespace WebAPI.Infrastructure.Extensions
 {
@@ -130,13 +132,17 @@ namespace WebAPI.Infrastructure.Extensions
             appRole.Name = appRoleViewModel.Name;
             appRole.Description = appRoleViewModel.Description;
         }
-        public static void UpdateUser(this User appUser, User appUserViewModel, string action = "add")
+        public static void UpdateUser(this User appUser, RegisterViewModel appUserViewModel)
         {
 
-            appUser.Id = appUserViewModel.Id;
+
             appUser.FullName = appUserViewModel.FullName;
             appUser.BirthDay = appUserViewModel.BirthDay;
-            appUser.UserName = appUserViewModel.UserName;
+            // appUser.UserName = appUserViewModel.Email;
+            //Byte[] buffer = System.Text.Encoding.ASCII.GetBytes(appUserViewModel.Password);
+            //appUser.PasswordHash = MD5.Create().ComputeHash(buffer).ToString();
+            appUser.PhoneNumber = appUserViewModel.PhoneNumber;
+            appUser.Address = appUserViewModel.Address;
         }
 
       
