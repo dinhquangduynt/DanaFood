@@ -99,7 +99,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
-
+        [Authorize(Roles = "Administrator")]
         [Route("updatestatus")]
         [HttpPut]
         public HttpResponseMessage Put(HttpRequestMessage request, Order order)
@@ -131,8 +131,6 @@ namespace WebAPI.Controllers
                 }
                 else
                 {
-                    //order.CreatedBy = User.Identity.Name;
-                   //order.CreatedDate = DateTime.Now;
                     var newOrder = _orderService.Add(order);
                     _orderService.Save();
                     response = request.CreateResponse(HttpStatusCode.Created, newOrder);

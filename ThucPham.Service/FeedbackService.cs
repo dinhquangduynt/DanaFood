@@ -24,11 +24,14 @@ namespace ThucPham.Service
     {
         private IFeedbackRepository _feedbackRepository;
         private IUnitOfWork _unitOfWork;
+        private ISupportOnlineRepository _supportOnlineRepository;
 
-        public FeedbackService(IFeedbackRepository feedbackRepository, IUnitOfWork unitOfWork)
+        public FeedbackService(IFeedbackRepository feedbackRepository, 
+            IUnitOfWork unitOfWork, ISupportOnlineRepository supportOnlineRepository)
         {
             _feedbackRepository = feedbackRepository;
             _unitOfWork = unitOfWork;
+            _supportOnlineRepository = supportOnlineRepository;
         }
 
         public Feedback Create(Feedback feedback)
@@ -51,7 +54,6 @@ namespace ThucPham.Service
             var feedback = _feedbackRepository.GetSingleById(id);
 
             feedback.Status = true;
-
             _feedbackRepository.Update(feedback);
 
             return feedback;

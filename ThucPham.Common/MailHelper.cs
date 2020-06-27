@@ -14,10 +14,10 @@ namespace ThucPham.Common
         {
             try
             {
-                var fromAddress = new MailAddress("duypro2603@gmail.com", "From Name");
+                var fromAddress = new MailAddress("danafoodsp@gmail.com", "From Name");
                 var toAddress = new MailAddress(toEmail, "To Name");
-                const string fromPassword = "dinhquangduy26031998";
-                Console.Write("aaaa");
+                const string fromPassword = "Quangduy98!";
+
                 var smtp = new SmtpClient
                 {
                     Host = "smtp.gmail.com",
@@ -27,7 +27,7 @@ namespace ThucPham.Common
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
                 };
-                Console.Write("aaaabbbbbbb");
+
                 using (var message = new MailMessage(fromAddress, toAddress)
                 {
                     Subject = subject,

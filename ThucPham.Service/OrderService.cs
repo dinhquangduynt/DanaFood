@@ -84,6 +84,7 @@ namespace ThucPham.Service
             try
             {
                 order.CreatedDate = DateTime.Now.Date;
+               // order.CreatedBy = orders.Order.User.FullName;
                 _orderRepository.Add(order);
                 _unitOfWork.Commit();
 

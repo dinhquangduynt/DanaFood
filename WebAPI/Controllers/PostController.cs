@@ -89,7 +89,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        [Authorize]
+        [Authorize(Roles ="Administrator")]
         [Route("update")]
         [HttpPut]
         public HttpResponseMessage Update(HttpRequestMessage request, Post post)
@@ -113,7 +113,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [Route("add")]
         [HttpPost]
         public HttpResponseMessage Add(HttpRequestMessage request, Post post)
@@ -143,9 +143,9 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [Route("delete/{id:int}")]
-        [HttpGet]
+        [HttpPost]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
             HttpResponseMessage response = null;

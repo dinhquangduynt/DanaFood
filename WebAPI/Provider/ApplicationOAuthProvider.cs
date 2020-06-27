@@ -101,10 +101,11 @@ namespace WebAPI.Provider
             {
                 { "Username", user.UserName },
                 { "Email", user.Email },
-                { "Fullname", user.UserName },
-                { "Birthday", user.Email },
-                { "Address", user.UserName },
-                { "PhoneNumber", user.Email }
+                { "Fullname", user.FullName },
+                { "Birthday", user.BirthDay.ToString() },
+                { "Address", user.Address},
+                { "PhoneNumber", user.PhoneNumber },
+                { "Password", user.PasswordHash}
             };
             return new AuthenticationProperties(data);
         }

@@ -23,3 +23,5 @@ D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.M
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.changeName.resources
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.bbb.resources
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.change.resources
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.changeSupportDb.resources
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.changeDb.resources

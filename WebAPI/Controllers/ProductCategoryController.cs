@@ -4,7 +4,6 @@ using System.Net.Http;
 using System.Web.Http;
 using ThucPham.Model.Models;
 using ThucPham.Service;
-using WebAPI.Infrastructure.Core;
 using WebAPI.Infrastructure.Extensions;
 
 namespace WebAPI.Controllers
@@ -55,7 +54,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [Route("add")]
         [HttpPost]
         public HttpResponseMessage Post(HttpRequestMessage request, ProductCategory productCategory)
@@ -74,7 +73,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [Route("update")]
         [HttpPut]
         public HttpResponseMessage Put(HttpRequestMessage request, ProductCategory productCategory)
@@ -111,7 +110,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [Route("delete/{id:int}")]
         [HttpDelete]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)

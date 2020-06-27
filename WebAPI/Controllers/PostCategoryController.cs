@@ -65,7 +65,7 @@ namespace WebAPI.Controllers
 
         }
 
-       [Authorize]
+        [Authorize(Roles = "Administrator")]
         [Route("add")]
         [HttpPost]
         public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
@@ -89,7 +89,7 @@ namespace WebAPI.Controllers
 
 
         //Put
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
 
         [Route("update")]
         [HttpPut]
@@ -116,7 +116,7 @@ namespace WebAPI.Controllers
 
 
         //Delete
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [Route("delete/{id:int}")]
         [HttpDelete]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
