@@ -50,6 +50,7 @@ import { SharedService } from 'src/app/services/shared.service';
 import { MatTabsModule} from '@angular/material/tabs';
 import { SendfeedbackemailComponent } from 'src/app/modules/feedback/sendfeedbackemail/sendfeedbackemail.component';
 import { FeedbackshowComponent } from 'src/app/modules/feedback/feedbackshow/feedbackshow.component';
+import { OrderdetailComponent } from 'src/app/modules/orders/orderdetail/orderdetail.component';
 
 
 
@@ -83,6 +84,7 @@ import { FeedbackshowComponent } from 'src/app/modules/feedback/feedbackshow/fee
     ProductlisteditComponent,
     SendfeedbackemailComponent,
     FeedbackshowComponent,
+    OrderdetailComponent,
 
   ],
   imports: [

@@ -33,7 +33,7 @@ const routes: Routes = [
       { path: 'products', component: ProductshowComponent, canActivate: [AuthGuard] },
       { path: 'orders', component: OrdershowComponent, canActivate: [AuthGuard] },
       { path: 'posts', component: PostshowComponent, canActivate: [AuthGuard] },
-      { path: 'sendreply', component: SendfeedbackemailComponent, canActivate: [AuthGuard] },
+      { path: 'sendreply/:id', component: SendfeedbackemailComponent, canActivate: [AuthGuard] },
       { path: 'feedback', component: FeedbackshowComponent, canActivate: [AuthGuard] },
       { path: 'addpostcate', component: PostaddComponent, canActivate: [AuthGuard] },
       { path: 'addproduct', component: ProductaddComponent, canActivate: [AuthGuard] },

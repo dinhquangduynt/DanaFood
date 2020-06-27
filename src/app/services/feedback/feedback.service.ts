@@ -13,7 +13,7 @@ export class FeedbackService {
   getAllFeedbacks(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(this.url + '/getall');
   }
-  getFeedbackById(FeedbackId : number): Observable<Feedback> {
+  getFeedbackById(FeedbackId : any): Observable<Feedback> {
     return this.http.get<Feedback>(this.url + '/getbyid/' + FeedbackId);
   }
   updateFeedback(Feedback : Feedback): Observable<Feedback> {
