@@ -13,7 +13,7 @@ import { SharedService } from 'src/app/services/shared.service';
 export class PostListshowComponent implements OnInit {
 
   ELEMENT_DATA : PostItem[];
-  displayedColumns: string[] = ['ID', 'Name', 'Alias', 'CategoryID', 'Action'];
+  displayedColumns: string[] = ['ID', 'Name', 'Alias', 'CategoryID','Image', 'Action'];
   dataSource = new MatTableDataSource<PostItem>(this.ELEMENT_DATA);
   //PostCategory: any = [];
   applyFilter(filterValue: string){
