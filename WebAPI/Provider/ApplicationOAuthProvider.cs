@@ -101,8 +101,8 @@ namespace WebAPI.Provider
             {
                 { "Username", user.UserName },
                 { "Email", user.Email },
-                { "Fullname", user.FullName },
-                { "Birthday", user.BirthDay.ToString() },
+                { "FullName", user.FullName },
+                { "BirthDay", user.BirthDay.ToString() },
                 { "Address", user.Address},
                 { "PhoneNumber", user.PhoneNumber },
                 { "Password", user.PasswordHash}
