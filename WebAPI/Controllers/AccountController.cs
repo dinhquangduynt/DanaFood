@@ -246,7 +246,7 @@ namespace WebAPI.Controllers
             {
                 user.UpdateUser(userViewModel);
 
-                user.PasswordHash = UserManager.PasswordHasher.HashPassword(userViewModel.Password);
+               // user.PasswordHash = UserManager.PasswordHasher.HashPassword(userViewModel.Password);
 
                 var result = UserManager.Update(user);
                 response = request.CreateResponse(HttpStatusCode.OK, userViewModel);
@@ -271,7 +271,7 @@ namespace WebAPI.Controllers
             var user = await UserManager.FindByNameAsync(name);
             try
             {
-               // user.UpdateUser(userViewModel);
+               //user.UpdateUser(userViewModel);
 
                 user.PasswordHash = UserManager.PasswordHasher.HashPassword(pass);
 

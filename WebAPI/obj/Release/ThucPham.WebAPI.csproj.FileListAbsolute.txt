@@ -98,3 +98,10 @@ D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\System.Web.WebPages.Razor.xml
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Antlr3.Runtime.pdb
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\obj\Release\WebAPI.dll
 D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\obj\Release\WebAPI.pdb
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Azure.KeyVault.Core.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.WindowsAzure.Configuration.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.WindowsAzure.Storage.dll
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.Azure.KeyVault.Core.xml
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.WindowsAzure.Configuration.xml
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.WindowsAzure.Storage.pdb
+D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\bin\Microsoft.WindowsAzure.Storage.xml
