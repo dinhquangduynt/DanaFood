@@ -35,6 +35,7 @@ export class ProductlistaddComponent implements OnInit {
       Description: [''],
       Price : [],
       Homeflag: false,
+      Content: [''],
       CategoryID : [this.cateID]
     })
   }
