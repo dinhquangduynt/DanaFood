@@ -3,6 +3,7 @@ import { ProductItem } from 'src/app/services/product/product-item';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductItemService } from 'src/app/services/product/product-item.service';
 import { ActivatedRoute } from '@angular/router';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-productlistshow',
@@ -22,6 +23,7 @@ export class ProductlistshowComponent implements OnInit {
   constructor(
     public postCate : ProductItemService,
     private route: ActivatedRoute,
+    private service: SharedService,
   ) { }
 
   ngOnInit() {
@@ -30,6 +32,7 @@ export class ProductlistshowComponent implements OnInit {
 
   public loadPosts() {
     const id = this.route.snapshot.paramMap.get('id');
+    this.service.send(id);
     let productcate = this.postCate.getAllProductByCategory(id);
     productcate.subscribe(postCateItem => this.dataSource.data = postCateItem as ProductItem[]);
   }

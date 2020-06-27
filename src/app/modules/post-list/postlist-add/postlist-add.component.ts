@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { PostItemService } from 'src/app/services/post/post-item.service';
+import { SharedService } from 'src/app/services/shared.service';
+import { Subscription } from 'rxjs/internal/Subscription';
+
 
 @Component({
   selector: 'app-postlist-add',
@@ -12,22 +15,30 @@ import { PostItemService } from 'src/app/services/post/post-item.service';
 export class PostlistAddComponent implements OnInit {
 
   addpost : FormGroup;
+  private cateID : any;
+  subscription: Subscription;
   constructor(
     private postcateservice: PostItemService,
     private route: ActivatedRoute,
     private router: Router ,
     public fb: FormBuilder,
+    private shared : SharedService,
     private http : HttpClient) {
+    this.subscription =  shared.subj$.subscribe(val=>{
+      this.cateID = val;
+        })
     this.addpost = this.fb.group({
       Name: [''],
       Alias: [''],
       Image: [''],
       Description: [''],
       Homeflag: false,
+      CategoryID : [this.cateID]
     })
   }
   imageObj: File;
   imageUrl: string;
+
   ngOnInit(): void {
   }
   uploadFile(event) {
