@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductItem } from 'src/app/services/product/product-item';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductItemService } from 'src/app/services/product/product-item.service';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from 'src/app/services/shared.service';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-productlistshow',
@@ -15,6 +17,9 @@ export class ProductlistshowComponent implements OnInit {
   ELEMENT_DATA : ProductItem[];
   displayedColumns: string[] = ['ID', 'ProductName', 'Alias','CategoryID','Image','Price','Description','Content','Action'];
   dataSource = new MatTableDataSource<ProductItem>(this.ELEMENT_DATA);
+
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   //PostCategory: any = [];
   applyFilter(filterValue: string){
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -28,6 +33,8 @@ export class ProductlistshowComponent implements OnInit {
 
   ngOnInit() {
     this.loadPosts()
+    this.dataSource.sort = this.sort
+    this.dataSource.paginator = this.paginator
   }
 
   public loadPosts() {

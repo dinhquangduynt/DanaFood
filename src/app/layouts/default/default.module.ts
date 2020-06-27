@@ -47,6 +47,7 @@ import { OrdereditComponent } from 'src/app/modules/orders/orderedit/orderedit.c
 import { ProductlistaddComponent } from 'src/app/modules/productlist/productlistadd/productlistadd.component';
 import { ProductlisteditComponent } from 'src/app/modules/productlist/productlistedit/productlistedit.component';
 import { SharedService } from 'src/app/services/shared.service';
+import { MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -106,6 +107,7 @@ import { SharedService } from 'src/app/services/shared.service';
     HttpClientJsonpModule,
     MatTooltipModule,
     MatPaginatorModule,
+    MatTabsModule,
 
   ],
   providers: [

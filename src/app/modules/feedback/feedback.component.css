@@ -1,18 +1,16 @@
 .contact-section{
-    background: #bde4f7;
     padding: 80px 0;
+    border-radius: 10px;
     text-align: center;
-    width: fit-content;
-    border-radius: 5%;
-    border-color: rgb(95, 184, 236);
-    text-align: center;
-    justify-content: center
+    justify-content: center;
 }
 
 .inner-width{
     max-width: 600px;
     margin: auto;
-    padding: 0 20px;
+    padding: 20px 20px;
+    background: #bde4f7;
+    border-radius: 10px;
 }
 
 .contact-section h1{
