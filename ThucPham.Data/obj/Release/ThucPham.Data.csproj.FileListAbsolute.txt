@@ -26,3 +26,4 @@ D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.M
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.changeSupportDb.resources
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.changeDb.resources
 D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.AddFieldOnFeedbackTable.resources
+D:\workspace_\Project-CNPM\C#\ThucPham\ThucPham.Data\obj\Release\ThucPham.Data.Migrations.addField.resources

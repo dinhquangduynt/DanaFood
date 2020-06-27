@@ -42,7 +42,7 @@ namespace ThucPham.Model.Models
         public string CreatedBy { get; set; }
         public bool Status { get; set; }
 
-       // public decimal TotalMoney { get; set; }
+        public decimal TotalMoney { get; set; }
       
         //chua co khoa ngoai voi bang user
         [StringLength(128)]

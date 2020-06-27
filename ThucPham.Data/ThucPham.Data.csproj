@@ -100,6 +100,10 @@
     <Compile Include="Migrations\202006271359312_AddFieldOnFeedbackTable.Designer.cs">
       <DependentUpon>202006271359312_AddFieldOnFeedbackTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006271432180_addField.cs" />
+    <Compile Include="Migrations\202006271432180_addField.Designer.cs">
+      <DependentUpon>202006271432180_addField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ContactDetailRepository.cs" />
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006271359312_AddFieldOnFeedbackTable.resx">
       <DependentUpon>202006271359312_AddFieldOnFeedbackTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006271432180_addField.resx">
+      <DependentUpon>202006271432180_addField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
