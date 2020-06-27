@@ -20,6 +20,7 @@ import { ProductlisteditComponent } from 'src/app/modules/productlist/productlis
 import { FeedbackComponent } from 'src/app/modules/feedback/feedback.component';
 import { UsershowComponent } from 'src/app/modules/user/usershow/usershow.component';
 import { AdminManagementComponent } from 'src/app/modules/user/admin-management/admin-management.component';
+import { ProductlistaddComponent } from 'src/app/modules/productlist/productlistadd/productlistadd.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
       { path: 'editproductlist/:id', component: ProductlisteditComponent, canActivate: [AuthGuard] },
       { path: 'editproductcate/:id', component: ProducteditComponent, canActivate: [AuthGuard] },
       { path: 'postlist/:id', component: PostListshowComponent, canActivate: [AuthGuard] },
+      { path: 'addproductlist', component: ProductlistaddComponent, canActivate: [AuthGuard] },
       { path: 'postitem', component: PostListshowComponent, canActivate: [AuthGuard] },
       { path: 'productlist/:id', component: ProductlistshowComponent, canActivate: [AuthGuard] },
       { path: 'editpostlist/:id', component: PostlistEditComponent, canActivate: [AuthGuard] },

@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class UsershowComponent implements OnInit {
 
   ELEMENT_DATA : User[];
-  displayedColumns: string[] = ['ID', 'CustomerName', 'CustomerAddress', 'CustomerEmail','CustomerMobile','Action'];
+  displayedColumns: string[] = ['UserName', 'FullName', 'Address','BirthDay', 'Email', 'PhoneNumber'];
   dataSource = new MatTableDataSource<User>(this.ELEMENT_DATA);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   //PostCategory: any = [];
@@ -33,13 +33,13 @@ export class UsershowComponent implements OnInit {
     productcate.subscribe(postCateItem => this.dataSource.data = postCateItem as User[]);
   }
 
-  onDelete(id : number) {
-    if (window.confirm('Are you sure, you want to delete?')){
-      this.postCate.deleteUserById(id).subscribe(data => {
-        this.loadPosts()
-      })
-    }
-  }
+  // onDelete(id : number) {
+  //   if (window.confirm('Are you sure, you want to delete?')){
+  //     this.postCate.deleteUserById(id).subscribe(data => {
+  //       this.loadPosts()
+  //     })
+  //   }
+  // }
 
 }
 

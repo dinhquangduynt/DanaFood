@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UserService {
 
-  url =  'https://danafoodapp.azurewebsites.net/api/user';
+  url =  'https://danafoodapp.azurewebsites.net/api/account';
   constructor(private http: HttpClient) { }
   formData : User;
   getAllUsers(): Observable<User[]> {

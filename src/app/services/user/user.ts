@@ -1,8 +1,9 @@
 export class User {
-  ID : number;
-  CustomerName : string;
-  CustomerAddress : string;
-  CustomerEmail : string;
-  CustomerMobile : string;
-  CustomerMessage : string;
+        Id : number;
+        UserName: string;
+        FullName: string;
+        Address: string;
+        BirthDay: Date;
+        Email: string;
+        PhoneNumber: string;
 }

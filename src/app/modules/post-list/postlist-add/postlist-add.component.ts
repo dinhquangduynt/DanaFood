@@ -57,7 +57,7 @@ export class PostlistAddComponent implements OnInit {
   //     (response: any) => {
   //       this.editCate.value.logo = response.data._id;
         this.postcateservice.createPost(this.addpost.value).subscribe((data: any) => {
-          this.router.navigateByUrl('postlist/:id');
+          this.router.navigateByUrl('postlist');
       (error: HttpErrorResponse) => {
         console.log(error.error);
       };
