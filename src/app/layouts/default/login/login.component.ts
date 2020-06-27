@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login/login.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
@@ -15,6 +15,11 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
 
   });
+  email = new FormControl('', [Validators.required, Validators.email]);
+
+  getErrorMessage() {
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
   constructor( private loginService : LoginService,
     public fb: FormBuilder,
     private router: Router) {}

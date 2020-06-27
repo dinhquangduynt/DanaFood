@@ -18,3 +18,6 @@
     padding-right: 8px;
 }
 
+.example-button-row button{
+    margin-right: 20px;
+}

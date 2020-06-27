@@ -3,10 +3,12 @@
   <div class="container">
     <form [formGroup] = "addpost" (ngSubmit)="onSubmit()">
       <label for="pname">Post Name</label>
-      <input type="text" id="pname" name="Name" formControlName = "Name" placeholder="Ex: Tôm sú">
+      <input type="text" id="pname" name="Name" formControlName = "Name" placeholder="Ex: Tôm sú" required>
+      
 
       <label for="alias">Alias Name</label>
-      <input type="text" id="alias" name="Alias" formControlName = "Alias" placeholder="Ex: tom su">
+      <input type="text" id="alias" name="Alias" formControlName = "Alias" placeholder="Ex: tom su" required>
+      
 
       <!-- <label for="category">Category</label>
       <select id="category" name="category">

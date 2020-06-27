@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
   styleUrls: ['./postlist-add.component.css']
 })
 export class PostlistAddComponent implements OnInit {
+  
 
   addpost : FormGroup;
   private cateID : any;
