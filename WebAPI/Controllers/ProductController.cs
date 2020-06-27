@@ -181,7 +181,7 @@ namespace WebAPI.Controllers
 
         [Authorize(Roles = "Administrator")]
         [Route("delete/{id:int}")]
-        [HttpGet]
+        [HttpDelete]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
             HttpResponseMessage response = null;
