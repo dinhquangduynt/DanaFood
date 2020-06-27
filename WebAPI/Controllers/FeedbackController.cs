@@ -36,7 +36,7 @@ namespace WebAPI.Controllers
             catch (Exception ex)
             {
 
-                response = request.CreateErrorResponse(HttpStatusCode.OK, ModelState);
+                response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
             return response;
         }

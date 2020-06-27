@@ -14,21 +14,21 @@ namespace ThucPham.Model.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { set; get; }
 
-        [Required]
-        [MaxLength(50)]
-        public string Name { set; get; }
+        //[Required]
+        //[MaxLength(50)]
+        //public string Name { set; get; }
 
-        [MaxLength(50)]
-        public string Department { set; get; }
+        //[MaxLength(50)]
+        //public string Department { set; get; }
 
-        [MaxLength(50)]
-        public string Mobile { set; get; }
+        //[MaxLength(50)]
+        //public string Mobile { set; get; }
 
-        [MaxLength(50)]
-        public string Email { set; get; }
+        //[MaxLength(50)]
+        //public string Email { set; get; }
 
-        public bool Status { set; get; }
+        //public bool Status { set; get; }
 
-        public int? DisplayOrder { set; get; }
+        //public int? DisplayOrder { set; get; }
     }
 }

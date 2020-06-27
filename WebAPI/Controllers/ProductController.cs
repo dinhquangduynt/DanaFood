@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using ThucPham.Common;
 using ThucPham.Model.Models;
 using ThucPham.Service;
 using WebAPI.Infrastructure.Extensions;
@@ -21,6 +22,7 @@ namespace WebAPI.Controllers
             this._productService = productService;
         }
 
+     
         [Route("getall")]
         [Route("getall/{keyword}")]
         [HttpGet]
@@ -36,9 +38,16 @@ namespace WebAPI.Controllers
             {
                 response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
             }
+            //string path = @"D:\workspace_\Project-CNPM\C#\ThucPham\WebAPI\Infrastructure\Extensions\MailHelper.html";
+            //string content = System.IO.File.ReadAllText(path);
+            //content = content.Replace("{{UserName}}", "Đinh Quang Duy");
+            // content = content.Replace("{{Link}}", ConfigHelper.GetByKey("CurrentLink") + "dang-nhap.html");
+            bool rs =  MailHelper.SendMail("dinhquangduynt@gmail.com", "Đăng ký thành công", "tks");
+            response = request.CreateResponse(HttpStatusCode.OK, rs);
             return response;
         }
 
+       
         [Route("detail/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
@@ -108,7 +117,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        //[Authorize]
+        [Authorize(Roles = "Administrator")]
         [Route("update")]
         [HttpPut]
         public HttpResponseMessage Update(HttpRequestMessage request, Product product)
@@ -133,9 +142,9 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        
 
-        //[Authorize]
+
+        [Authorize(Roles = "Administrator")]
         [Route("add")]
         [HttpPost]
         public async Task<HttpResponseMessage> Add(HttpRequestMessage request, Product product)
@@ -170,12 +179,7 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        private string UploadImage()
-        {
-            throw new NotImplementedException();
-        }
-
-        //[Authorize]
+        [Authorize(Roles = "Administrator")]
         [Route("delete/{id:int}")]
         [HttpGet]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)

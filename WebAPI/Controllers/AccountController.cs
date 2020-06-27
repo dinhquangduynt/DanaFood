@@ -19,6 +19,8 @@ using Microsoft.Owin.Security.OAuth;
 using Microsoft.Owin.Security.Cookies;
 using WebAPI.Provider;
 using WebAPI.Results;
+using ThucPham.Common;
+using ThucPham.Data.Repositories;
 
 namespace WebAPI.Controllers
 {
@@ -27,16 +29,18 @@ namespace WebAPI.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private IRoleRepository _role;
 
         public AccountController()
         {
         }
 
         public AccountController(ApplicationUserManager userManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat, IRoleRepository role)
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
+            _role = role;
         }
 
         public ApplicationUserManager UserManager
@@ -52,23 +56,36 @@ namespace WebAPI.Controllers
         }
 
 
-        public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; } 
+        public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
         [AllowAnonymous]
         [Route("register")]
         [HttpPost]
         public async Task<HttpResponseMessage> Register(HttpRequestMessage request, RegisterViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
+            HttpResponseMessage response = null;
 
-            var user = new User() { UserName = model.Email, Email = model.Email, Address = model.Address, PhoneNumber = model.PhoneNumber, BirthDay = model.BirthDay };
+            
+            var user = new User() { UserName = model.Email, Email = model.Email, Address = model.Address, PhoneNumber = model.PhoneNumber, BirthDay = model.BirthDay, FullName = model.FullName};
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+           
+            // var role = _role.GetAll();
+            if (result.Succeeded)
+            {
+               
+               // await UserManager.AddToRoleAsync(user.Id, "ad");
 
-            return request.CreateResponse(HttpStatusCode.OK);
+                //await UserManager.AddToRoleAsync(user.Id, "ad");
+                response = request.CreateResponse(HttpStatusCode.OK, user);
+            }
+            else
+            {
+                response = request.CreateErrorResponse(HttpStatusCode.BadRequest, "fail");
+            }
+            //await SignInManager(model, isPersistent: false);
+
+            return response;
         }
 
 
@@ -86,13 +103,19 @@ namespace WebAPI.Controllers
 
             else
             {
+                string PublicClientId = "self";
                 try
                 {
                     User user = await UserManager.FindAsync(model.Username, model.Password);
                     if (user != null)
                     {
+                        ApplicationOAuthProvider Provider = new ApplicationOAuthProvider(PublicClientId);
+                        ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+               OAuthDefaults.AuthenticationType);
                         ClaimsIdentity identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ExternalBearer);
-                        response = request.CreateResponse(HttpStatusCode.OK, identity);
+
+                        response = request.CreateResponse(HttpStatusCode.OK, user);
+
                     }
                 }
                 catch (Exception ex)
@@ -158,6 +181,55 @@ namespace WebAPI.Controllers
         }
 
 
+        [Route("getall")]
+        [HttpGet]
+        public HttpResponseMessage GetAll(HttpRequestMessage request)
+        {
+            HttpResponseMessage response = null;
+            try
+            {
+
+                var model = UserManager.Users;
+                response = request.CreateResponse(HttpStatusCode.OK, model);
+            }
+            catch (Exception ex)
+            {
+
+                response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+            return response;
+        }
+
+
+
+        [Route("getdetail/{id}")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> GetById(HttpRequestMessage request, string id)
+        {
+            HttpResponseMessage response = null;
+
+            if (!string.IsNullOrEmpty(id))
+            {
+                response = request.CreateErrorResponse(HttpStatusCode.BadRequest, nameof(id) + " không có giá trị.");
+            }
+
+            var model = UserManager.FindById(id);
+
+            if(model ==null)
+            {
+                response = request.CreateErrorResponse(HttpStatusCode.NoContent, "Không có dữ liệu");
+            }
+            else
+            {
+                await UserManager.AddToRoleAsync(id, "Administrator");
+                response = request.CreateResponse(HttpStatusCode.OK, model);
+            }
+            
+
+            return response;
+        }
+
+
 
         private class ExternalLoginData
         {
@@ -212,6 +284,6 @@ namespace WebAPI.Controllers
             get { return Request.GetOwinContext().Authentication; }
         }
         #endregion
- 
+
     }
 }

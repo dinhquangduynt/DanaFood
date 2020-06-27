@@ -36,7 +36,7 @@ namespace ThucPham.Data
        //public DbSet<UserGroup> UserGroups { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
 
-       public DbSet<Role> appRoles { get; set; }
+       public DbSet<Role> Roles { get; set; }
         //public DbSet<User> appUsers { get; set; }
 
 

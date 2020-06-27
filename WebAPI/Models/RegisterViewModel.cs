@@ -11,7 +11,7 @@ namespace WebAPI.Models
 
         public string Password { set; get; }
 
-        public string ConfirmPassword { set; get; }
+        //public string ConfirmPassword { set; get; }
 
         public string Email { set; get; }
 
@@ -20,5 +20,7 @@ namespace WebAPI.Models
         public string PhoneNumber { set; get; }
 
         public DateTime BirthDay { set; get; }
+
+        //public string Role { get; set; }
     }
 }
