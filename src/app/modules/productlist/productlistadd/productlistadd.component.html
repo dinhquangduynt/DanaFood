@@ -2,8 +2,9 @@
 
   <div class="container">
     <form [formGroup] = "addpost" (ngSubmit)="onSubmit()">
-      <label for="pname">Post Name</label>
-      <input type="text" id="pname" name="Name" formControlName = "Name" placeholder="Ex: Tôm sú">
+
+      <label for="pname">Product Name</label>
+      <input type="text" id="pname" name="Name" formControlName = "Name">
 
       <label for="alias">Alias Name</label>
       <input type="text" id="alias" name="Alias" formControlName = "Alias" placeholder="Ex: tom su">
@@ -13,6 +14,8 @@
         <option value="australia">Tôm</option>
         <option value="canada">Sò</option>
       </select> -->
+      <label for="alias">Price</label>
+      <input type="text" id="alias" name="Price" formControlName = "Price" placeholder="Ex: tom su">
 
       <label for="url_image">Url Image</label>
       <input type="text" id="url" name="Url" formControlName = "Image" placeholder="Ex: https://danafoodapp.com/abc.jpg">
@@ -22,10 +25,13 @@
       <label for="description">Description</label>
       <textarea id="description" name="description" formControlName = "Description" placeholder="Write something.." style="height:200px"></textarea>
 
-      <div class="checked">
+      <label for="description">Content</label>
+      <textarea id="description" name="Content" formControlName = "Content" placeholder="Write something.." style="height:200px"></textarea>
+
+      <!-- <div class="checked">
         <label for="myCheck">HomeFlag:</label>
         <input type="checkbox" id="myCheck" onclick="myFunction()">
-      </div>
+      </div> -->
       <!-- <div class="checked">
         <label for="myCheck">HotFlag:</label>
         <input type="checkbox" id="myCheck" onclick="myFunction()">

@@ -48,6 +48,8 @@ import { ProductlistaddComponent } from 'src/app/modules/productlist/productlist
 import { ProductlisteditComponent } from 'src/app/modules/productlist/productlistedit/productlistedit.component';
 import { SharedService } from 'src/app/services/shared.service';
 import { MatTabsModule} from '@angular/material/tabs';
+import { SendfeedbackemailComponent } from 'src/app/modules/feedback/sendfeedbackemail/sendfeedbackemail.component';
+import { FeedbackshowComponent } from 'src/app/modules/feedback/feedbackshow/feedbackshow.component';
 
 
 
@@ -79,6 +81,8 @@ import { MatTabsModule} from '@angular/material/tabs';
     OrdereditComponent,
     ProductlistaddComponent,
     ProductlisteditComponent,
+    SendfeedbackemailComponent,
+    FeedbackshowComponent,
 
   ],
   imports: [

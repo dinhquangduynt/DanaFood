@@ -33,6 +33,7 @@ export class ProductlistaddComponent implements OnInit {
       Alias: [''],
       Image: [''],
       Description: [''],
+      Price : [],
       Homeflag: false,
       CategoryID : [this.cateID]
     })

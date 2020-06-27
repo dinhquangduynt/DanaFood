@@ -21,6 +21,8 @@ import { FeedbackComponent } from 'src/app/modules/feedback/feedback.component';
 import { UsershowComponent } from 'src/app/modules/user/usershow/usershow.component';
 import { AdminManagementComponent } from 'src/app/modules/user/admin-management/admin-management.component';
 import { ProductlistaddComponent } from 'src/app/modules/productlist/productlistadd/productlistadd.component';
+import { FeedbackshowComponent } from 'src/app/modules/feedback/feedbackshow/feedbackshow.component';
+import { SendfeedbackemailComponent } from 'src/app/modules/feedback/sendfeedbackemail/sendfeedbackemail.component';
 
 
 const routes: Routes = [
@@ -31,7 +33,8 @@ const routes: Routes = [
       { path: 'products', component: ProductshowComponent, canActivate: [AuthGuard] },
       { path: 'orders', component: OrdershowComponent, canActivate: [AuthGuard] },
       { path: 'posts', component: PostshowComponent, canActivate: [AuthGuard] },
-      { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] },
+      { path: 'sendreply', component: SendfeedbackemailComponent, canActivate: [AuthGuard] },
+      { path: 'feedback', component: FeedbackshowComponent, canActivate: [AuthGuard] },
       { path: 'addpostcate', component: PostaddComponent, canActivate: [AuthGuard] },
       { path: 'addproduct', component: ProductaddComponent, canActivate: [AuthGuard] },
      // { path: 'addorder', component: OrderaddComponent, canActivate: [AuthGuard] },

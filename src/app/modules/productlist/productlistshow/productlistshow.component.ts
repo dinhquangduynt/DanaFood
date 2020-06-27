@@ -15,7 +15,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class ProductlistshowComponent implements OnInit {
 
   ELEMENT_DATA : ProductItem[];
-  displayedColumns: string[] = ['ID', 'ProductName', 'Alias','CategoryID','Image','Price','Description','Content','Action'];
+  displayedColumns: string[] = ['ID', 'ProductName', 'Alias','CategoryID','Image','Price','Description','Action'];
   dataSource = new MatTableDataSource<ProductItem>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort) sort: MatSort;

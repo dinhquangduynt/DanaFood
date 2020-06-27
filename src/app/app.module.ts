@@ -12,6 +12,7 @@ import { DefaultModule } from './layouts/default/default.module';
   declarations: [
     AppComponent,
 
+
   ],
   imports: [
     BrowserModule,
