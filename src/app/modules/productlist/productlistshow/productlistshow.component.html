@@ -1,7 +1,7 @@
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Search box</mat-label>
-    <input type="text" matInput (keyup)="$event.target.value" placeholder="enter key word">
+    <input type="text" matInput (keyup)="applyFilter($event.target.value)" placeholder="enter key word">
   </mat-form-field>
 </form>
 <a mat-raised-button class="material-icons color_green" routerLink="/addproductlist">+ Add new</a>
