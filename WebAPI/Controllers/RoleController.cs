@@ -26,7 +26,7 @@ namespace WebAPI.Controllers
 
             response = request.CreateResponse(HttpStatusCode.OK, model);
 
-            return request.CreateResponse(HttpStatusCode.OK);
+            return request.CreateResponse(HttpStatusCode.OK, model);
         }
 
 

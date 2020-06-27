@@ -21,6 +21,6 @@ namespace WebAPI.Models
 
         public DateTime BirthDay { set; get; }
 
-        //public string Role { get; set; }
+        public string Role { get; set; }
     }
 }

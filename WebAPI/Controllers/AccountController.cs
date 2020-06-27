@@ -68,21 +68,26 @@ namespace WebAPI.Controllers
             var user = new User() { UserName = model.Email, Email = model.Email, Address = model.Address, PhoneNumber = model.PhoneNumber, BirthDay = model.BirthDay, FullName = model.FullName};
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-           
-            // var role = _role.GetAll();
+
             if (result.Succeeded)
             {
-               
-               // await UserManager.AddToRoleAsync(user.Id, "ad");
+                if (string.IsNullOrEmpty(model.Role))
+                {
+                    model.Role = "Customer";
+                }
+                else
+                {
+                    model.Role = "Administrator";
+                }
 
-                //await UserManager.AddToRoleAsync(user.Id, "ad");
-                response = request.CreateResponse(HttpStatusCode.OK, user);
+                await UserManager.AddToRoleAsync(user.Id, model.Role);
+
+                response = request.CreateResponse(HttpStatusCode.Created, user);
             }
             else
             {
                 response = request.CreateErrorResponse(HttpStatusCode.BadRequest, "fail");
             }
-            //await SignInManager(model, isPersistent: false);
 
             return response;
         }

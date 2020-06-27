@@ -70,9 +70,10 @@ namespace WebAPI.Controllers
             return response;
         }
 
+
+        [Authorize(Roles = "Administrator")]
         [Route("reply/{id:int}")]
         [HttpPut]
-
         public HttpResponseMessage Update(HttpRequestMessage request, SupportOnline support ,int id)
         {
             HttpResponseMessage response = null;

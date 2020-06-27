@@ -152,6 +152,7 @@ namespace WebAPI.Controllers
             try
             {
                 var post = _postService.Delete(id);
+                _postService.Save();
                 response = request.CreateResponse(HttpStatusCode.OK, post);
             }
             catch (Exception ex)
