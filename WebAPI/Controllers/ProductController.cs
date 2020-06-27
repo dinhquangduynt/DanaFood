@@ -42,8 +42,8 @@ namespace WebAPI.Controllers
             //string content = System.IO.File.ReadAllText(path);
             //content = content.Replace("{{UserName}}", "Đinh Quang Duy");
             // content = content.Replace("{{Link}}", ConfigHelper.GetByKey("CurrentLink") + "dang-nhap.html");
-            bool rs =  MailHelper.SendMail("dinhquangduynt@gmail.com", "Đăng ký thành công", "tks");
-            response = request.CreateResponse(HttpStatusCode.OK, rs);
+            //bool rs =  MailHelper.SendMail("dinhquangduynt@gmail.com", "Đăng ký thành công", "tks");
+            //response = request.CreateResponse(HttpStatusCode.OK, rs);
             return response;
         }
 
