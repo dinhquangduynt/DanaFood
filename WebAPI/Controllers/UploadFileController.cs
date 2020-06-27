@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace WebAPI.Controllers
 {
-    //[RoutePrefix("uploadfile")]
+    [RoutePrefix("uploadfile")]
     public class UploadFileController : ApiController
     {
 
@@ -21,6 +21,7 @@ namespace WebAPI.Controllers
             var ctx = HttpContext.Current;
             var root = ctx.Server.MapPath("~/Images");
             var provider = new MultipartFileStreamProvider(root);
+            string filePath = "";
             try
             {
                 await Request.Content.ReadAsMultipartAsync(provider);
@@ -30,20 +31,19 @@ namespace WebAPI.Controllers
                     var name = file.Headers.ContentDisposition.FileName;
 
                     name = name.Trim('"');
-                   // name = name.Replace("'\\'", "'\'");
                     var localfilename = file.LocalFileName;
-                    var filePath = Path.Combine(root, name);
+                    filePath += Path.Combine(root, name);
                     File.Move(localfilename, filePath);
-                    return filePath;
+                    
                 }
             }
             catch (Exception ex)
             {
 
-                return ex.Message;
+                return "Upload fail";
             }
 
-            return "upload fail";
+            return filePath;
         }
     }
 }

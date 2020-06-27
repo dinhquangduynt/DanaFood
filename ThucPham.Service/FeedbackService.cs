@@ -15,7 +15,7 @@ namespace ThucPham.Service
 
         IEnumerable<Feedback> GetAll();
 
-        Feedback Update(int id);
+        void Update(Feedback feedback);
 
         Feedback GetByID(int id);
 
@@ -51,14 +51,9 @@ namespace ThucPham.Service
             _unitOfWork.Commit();
         }
 
-        public Feedback Update(int id)
+        public void Update(Feedback feedback)
         {
-            var feedback = _feedbackRepository.GetSingleById(id);
-
-            feedback.Status = true;
-            _feedbackRepository.Update(feedback);
-
-            return feedback;
+             _feedbackRepository.Update(feedback);
         }
 
         public Feedback GetByID(int id)

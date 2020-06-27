@@ -94,8 +94,10 @@ namespace WebAPI.Infrastructure.Extensions
             feedback.Name = feedbackVm.Name;
             feedback.Email = feedbackVm.Email;
             feedback.Message = feedbackVm.Message;
-            feedback.Status = feedbackVm.Status;
-            feedback.CreatedDate = DateTime.Now;
+            feedback.Status = true;
+            feedback.Title = feedbackVm.Title;
+            feedback.EmailContent = feedbackVm.EmailContent;
+            //feedback.CreatedDate = DateTime.Now;
         }
 
         public static void UpdateOrder(this Order order, Order orderVm)
@@ -136,5 +138,7 @@ namespace WebAPI.Infrastructure.Extensions
             appUser.BirthDay = appUserViewModel.BirthDay;
             appUser.UserName = appUserViewModel.UserName;
         }
+
+      
     }
 }

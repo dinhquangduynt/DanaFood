@@ -9,6 +9,7 @@ using ThucPham.Common;
 using ThucPham.Data.Infrastructure;
 using ThucPham.Model.Models;
 using ThucPham.Service;
+using WebAPI.Infrastructure.Extensions;
 
 namespace WebAPI.Controllers
 {
@@ -92,20 +93,21 @@ namespace WebAPI.Controllers
 
 
         [Authorize(Roles = "Administrator")]
-        [Route("reply/{id:int}")]
+        [Route("reply")]
         [HttpPut]
-        public HttpResponseMessage Update(HttpRequestMessage request, SupportOnline support ,int id)
+        public HttpResponseMessage Update(HttpRequestMessage request, Feedback support)
         {
             HttpResponseMessage response = null;
             try
             {
-                var feedback = _feedbackService.Update(id);
-                var suppor = _supportOnlineService.Create(support);
+                var feedback = _feedbackService.GetByID(support.ID);
+                feedback.UpdateFeedback(support);
+                _feedbackService.Update(feedback);
 
                 var content = System.IO.File.ReadAllText(HttpContext.Current.Server.MapPath("~/Infrastructure/Extensions/MailHelper.html"));
 
-                content = content.Replace("{{UserName}}", support.Name);
-                content = content.Replace("{{Content}}", support.Content);
+                content = content.Replace("{{UserName}}", feedback.Name);
+                content = content.Replace("{{Content}}", feedback.EmailContent);
 
                 if (MailHelper.SendMail(support.Email,support.Title, content))
                 {

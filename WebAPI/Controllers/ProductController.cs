@@ -128,6 +128,7 @@ namespace WebAPI.Controllers
             {
                 var productDb = _productService.GetById(product.ID);
                 productDb.UpdateProduct(product);
+
                 productDb.UpdatedDate = DateTime.Now;
                 productDb.UpdatedBy = User.Identity.Name;
 

@@ -13,21 +13,27 @@ namespace ThucPham.Model.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { set; get; }
+            public int ID { set; get; }
 
-        [StringLength(250)]
-        [Required]
-        public string Name { set; get; }
+            [StringLength(250)]
+            [Required]
+            public string Name { set; get; }
 
-        [StringLength(250)]
-        public string Email { set; get; }
+            [StringLength(250)]
+            public string Email { set; get; }
 
-        [StringLength(500)]
-        public string Message { set; get; }
+            [StringLength(500)]
+            public string Message { set; get; }
 
-        public DateTime CreatedDate { set; get; }
+            public DateTime CreatedDate { set; get; }
 
-        public bool Status { set; get; }
+            [MaxLength(200)]
+            public string Title { set; get; }
+
+            [MaxLength(500)]
+            public string EmailContent { set; get; }
+
+            public bool? Status { set; get; }
     }
 }
 
