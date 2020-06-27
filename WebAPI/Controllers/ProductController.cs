@@ -188,6 +188,7 @@ namespace WebAPI.Controllers
             try
             {
                 var listProduct = _productService.Delete(id);
+                _productService.Save();
                 response = request.CreateResponse(HttpStatusCode.OK, listProduct);
             }
             catch (Exception ex)
