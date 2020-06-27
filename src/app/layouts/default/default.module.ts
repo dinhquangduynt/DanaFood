@@ -105,6 +105,7 @@ import { SharedService } from 'src/app/services/shared.service';
     HttpClientModule,
     HttpClientJsonpModule,
     MatTooltipModule,
+    MatPaginatorModule,
 
   ],
   providers: [

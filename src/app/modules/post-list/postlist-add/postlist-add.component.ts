@@ -24,9 +24,11 @@ export class PostlistAddComponent implements OnInit {
     public fb: FormBuilder,
     private shared : SharedService,
     private http : HttpClient) {
-    this.subscription =  shared.subj$.subscribe(val=>{
-      this.cateID = val;
-        })
+    // this.subscription =  shared.subj$.subscribe(val=>{
+    //   this.cateID = val;
+    //     })
+    this.cateID = localStorage.getItem("CateID");
+
     this.addpost = this.fb.group({
       Name: [''],
       Alias: [''],
@@ -40,6 +42,7 @@ export class PostlistAddComponent implements OnInit {
   imageUrl: string;
 
   ngOnInit(): void {
+    localStorage.removeItem("CateID");
   }
   uploadFile(event) {
     const FILE = (event.target as HTMLInputElement).files[0];

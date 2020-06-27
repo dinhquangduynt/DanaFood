@@ -18,12 +18,15 @@ import { OrdereditComponent } from 'src/app/modules/orders/orderedit/orderedit.c
 import { PostlistAddComponent } from 'src/app/modules/post-list/postlist-add/postlist-add.component';
 import { ProductlisteditComponent } from 'src/app/modules/productlist/productlistedit/productlistedit.component';
 import { FeedbackComponent } from 'src/app/modules/feedback/feedback.component';
+import { UsershowComponent } from 'src/app/modules/user/usershow/usershow.component';
+import { AdminManagementComponent } from 'src/app/modules/user/admin-management/admin-management.component';
 
 
 const routes: Routes = [
   { path: '', component: DefaultComponent,
     children: [
-      { path: 'das', component: DashboardComponent,canActivate: [AuthGuard] },
+      { path: 'das', component: UsershowComponent,canActivate: [AuthGuard] },
+      { path: 'admin', component: AdminManagementComponent,canActivate: [AuthGuard] },
       { path: 'products', component: ProductshowComponent, canActivate: [AuthGuard] },
       { path: 'orders', component: OrdershowComponent, canActivate: [AuthGuard] },
       { path: 'posts', component: PostshowComponent, canActivate: [AuthGuard] },
