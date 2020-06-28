@@ -1,38 +1,31 @@
+
 <mat-tab-group mat-align-tabs="center">
     <mat-tab>
         <ng-template mat-tab-label>
             <mat-icon class="example-tab-icon">account_circle</mat-icon>
             Edit Profile
         </ng-template>
-        <form class="example-form">
-            <mat-form-field class="example-full-width">
-                <mat-label>Email</mat-label>
-                <input matInput value="dinhqquangduynt@gmail.com">
-            </mat-form-field>
+        <form class="example-form" [formGroup]="admin" (ngSubmit)="onSubmit()">
             <mat-form-field class="example-full-width">
                 <mat-label>Fullname</mat-label>
-                <input matInput value="Dinh Quang Duy">
+                <input matInput formControlName="FullName">
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Phone number</mat-label>
-                <input matInput value="0977694163">
+                <input matInput formControlName="PhoneNumber">
             </mat-form-field>
-            <mat-form-field class="example-full-width">
+            <!-- <mat-form-field class="example-full-width">
                 <mat-label>Birthday</mat-label>
-                <input matInput value="26-03-1998">
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-                <mat-label>Birthday</mat-label>
-                <input matInput value="26-03-1998">
-            </mat-form-field>
+                <input matInput formControlName="Birthday">
+            </mat-form-field> -->
             <mat-form-field class="example-full-width_1">
                 <mat-label>Address</mat-label>
-                <textarea matInput>Ngo Thi Nham</textarea>
+                <textarea matInput formControlName="Address"></textarea>
             </mat-form-field>
         </form>
         <div class="example-button-row">
-            <button mat-raised-button color="primary">Save</button>
-            <button mat-raised-button color="warn">Cancel</button>
+            <button mat-raised-button color="primary" type="submit">Save</button>
+            <button mat-raised-button color="warn" routerLink="/das">Cancel</button>
         </div>
     </mat-tab>
 
@@ -41,7 +34,7 @@
             <mat-icon class="example-tab-icon">lock</mat-icon>
             Edit Password
         </ng-template>
-        <form class="example-form">
+        <form class="example-form" [formGroup]="password">
             <mat-form-field class="example-full-width">
                 <mat-label>Old Password</mat-label>
                 <input matInput>
@@ -56,8 +49,8 @@
             </mat-form-field>
         </form>
         <div class="example-button-row">
-            <button mat-raised-button color="primary">Save</button>
-            <button mat-raised-button color="warn">Cancel</button>
+            <button mat-raised-button color="primary" type="submit">Save</button>
+            <button mat-raised-button color="warn" routerLink="/das">Cancel</button>
 
         </div>
     </mat-tab>

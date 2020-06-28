@@ -1,9 +1,8 @@
 export class User {
         Id : number;
-        UserName: string;
+        //UserName: string;
         FullName: string;
         Address: string;
-        BirthDay: Date;
-        Email: string;
-        PhoneNumber: string;
+        //BirthDay: Date;
+        PhoneNumber: any;
 }
