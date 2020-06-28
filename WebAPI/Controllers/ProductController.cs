@@ -148,7 +148,7 @@ namespace WebAPI.Controllers
         [Authorize(Roles = "Administrator")]
         [Route("add")]
         [HttpPost]
-        public async Task<HttpResponseMessage> Add(HttpRequestMessage request, Product product)
+        public HttpResponseMessage Add(HttpRequestMessage request, Product product)
         {
             HttpResponseMessage response = null;
             try
@@ -162,10 +162,11 @@ namespace WebAPI.Controllers
                     var productDb = new Product();
                     // productDb.CreatedBy = User.Identity.Name;
                     // productDb.UpdateProduct(product);
-                    UploadFileController upload = new UploadFileController();
-                    product.Image = await upload.UploadFile();
+                    //UploadFileController upload = new UploadFileController();
+                    //product.Image = await upload.UploadFile();
 
                     product.CreatedDate = DateTime.Now;
+                    product.CreatedBy = User.Identity.Name;
                     productDb = _productService.Add(product);
 
                     _productService.Save();
