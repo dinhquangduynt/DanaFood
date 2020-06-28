@@ -18,7 +18,7 @@ namespace ThucPham.Service
 
         OrderTotal Add(OrderTotal orders);
 
-        void UpdateStatus(int orderId);
+        void UpdateStatus(Order order);
 
         Order Delete(int id);
         void Save();
@@ -70,9 +70,9 @@ namespace ThucPham.Service
             _unitOfWork.Commit();
         }
 
-        public void UpdateStatus(int orderId)
+        public void UpdateStatus(Order order)
         {
-            var order = _orderRepository.GetSingleById(orderId);
+            //var order = _orderRepository.GetSingleById(orderId);
 
             order.Status = true;
             _orderRepository.Update(order);

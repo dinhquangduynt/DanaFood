@@ -107,9 +107,11 @@ namespace WebAPI.Controllers
             HttpResponseMessage response = null;
             try
             {
-                _orderService.UpdateStatus(order.ID);
+                var or = _orderService.GetById(order.ID);
+                _orderService.UpdateStatus(or);
                 _orderService.Save();
-                response = Request.CreateResponse(HttpStatusCode.OK);
+                
+                response = Request.CreateResponse(HttpStatusCode.OK, or);
             }
             catch (Exception ex)
             {
