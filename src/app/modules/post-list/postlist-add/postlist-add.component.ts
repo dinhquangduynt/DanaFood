@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
   styleUrls: ['./postlist-add.component.css']
 })
 export class PostlistAddComponent implements OnInit {
-  
+
 
   addpost : FormGroup;
   private cateID : any;
@@ -58,7 +58,7 @@ export class PostlistAddComponent implements OnInit {
   //     (response: any) => {
   //       this.editCate.value.logo = response.data._id;
         this.postcateservice.createPost(this.addpost.value).subscribe((data: any) => {
-          this.router.navigateByUrl('postlist');
+          this.router.navigateByUrl('posts');
       (error: HttpErrorResponse) => {
         console.log(error.error);
       };

@@ -33,26 +33,30 @@
     <td mat-cell *matCellDef="let element"> {{element.CustomerMobile}} </td>
   </ng-container>
 
-  <!-- <ng-container matColumnDef="CustomerMessage">
-    <th mat-header-cell *matHeaderCellDef> Message </th>
-    <td mat-cell *matCellDef="let element"> {{element.CustomerMessage}} </td>
+   <!-- <ng-container matColumnDef="Status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element">
+      <div *ngIf="{{element.Status}}">
+        <mat-icon>check_circle</mat-icon>
+    </div>
   </ng-container> -->
 
-  <!-- <ng-container matColumnDef="PaymentMethod">
+   <!-- <ng-container matColumnDef="PaymentMethod">
     <th mat-header-cell *matHeaderCellDef> Payment Method</th>
     <td mat-cell *matCellDef="let element"> {{element.PaymentMethod}} </td>
-  </ng-container>
+  </ng-container> -->
 
    <ng-container matColumnDef="Status">
     <th mat-header-cell *matHeaderCellDef> Status </th>
     <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
-  </ng-container> -->
+  </ng-container>
 
   <ng-container matColumnDef="Action">
     <th mat-header-cell *matHeaderCellDef> Action</th>
     <mat-cell *matCellDef="let row">
       <button mat-icon-button [routerLink]="['/editorder', row.ID]" ><mat-icon>launch</mat-icon></button>
       <button mat-icon-button color="warn" (click)="onDelete(row.ID)"><mat-icon>delete_outline</mat-icon></button>
+      <button mat-icon-button color="primary" matTooltip="Detail about Order" [routerLink]="['/orderdetail', row.ID]"><mat-icon>info</mat-icon></button>
     </mat-cell>
   </ng-container>
 

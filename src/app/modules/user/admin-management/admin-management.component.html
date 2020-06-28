@@ -6,6 +6,10 @@
             Edit Profile
         </ng-template>
         <form class="example-form" [formGroup]="admin" (ngSubmit)="onSubmit()">
+             <!-- <mat-form-field class="example-full-width">
+                <mat-label>UserName</mat-label>
+                <input matInput formControlName="UserName">
+            </mat-form-field> -->
             <mat-form-field class="example-full-width">
                 <mat-label>Fullname</mat-label>
                 <input matInput formControlName="FullName">
@@ -14,10 +18,7 @@
                 <mat-label>Phone number</mat-label>
                 <input matInput formControlName="PhoneNumber">
             </mat-form-field>
-            <!-- <mat-form-field class="example-full-width">
-                <mat-label>Birthday</mat-label>
-                <input matInput formControlName="Birthday">
-            </mat-form-field> -->
+
             <mat-form-field class="example-full-width_1">
                 <mat-label>Address</mat-label>
                 <textarea matInput formControlName="Address"></textarea>
@@ -29,7 +30,7 @@
         </div>
     </mat-tab>
 
-    <mat-tab>
+    <!-- <mat-tab>
         <ng-template mat-tab-label>
             <mat-icon class="example-tab-icon">lock</mat-icon>
             Edit Password
@@ -53,6 +54,6 @@
             <button mat-raised-button color="warn" routerLink="/das">Cancel</button>
 
         </div>
-    </mat-tab>
+    </mat-tab> -->
 
 </mat-tab-group>

@@ -23,6 +23,7 @@ import { AdminManagementComponent } from 'src/app/modules/user/admin-management/
 import { ProductlistaddComponent } from 'src/app/modules/productlist/productlistadd/productlistadd.component';
 import { FeedbackshowComponent } from 'src/app/modules/feedback/feedbackshow/feedbackshow.component';
 import { SendfeedbackemailComponent } from 'src/app/modules/feedback/sendfeedbackemail/sendfeedbackemail.component';
+import { OrderdetailComponent } from 'src/app/modules/orders/orderdetail/orderdetail.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'admin', component: AdminManagementComponent,canActivate: [AuthGuard] },
       { path: 'products', component: ProductshowComponent, canActivate: [AuthGuard] },
       { path: 'orders', component: OrdershowComponent, canActivate: [AuthGuard] },
+      { path: 'orderdetail/:id', component: OrderdetailComponent, canActivate: [AuthGuard] },
       { path: 'posts', component: PostshowComponent, canActivate: [AuthGuard] },
       { path: 'sendreply/:id', component: SendfeedbackemailComponent, canActivate: [AuthGuard] },
       { path: 'feedback', component: FeedbackshowComponent, canActivate: [AuthGuard] },

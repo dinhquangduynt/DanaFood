@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Order } from './order.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
+import { Orderdetail } from './orderdetail';
 
 
 @Injectable({
@@ -15,13 +16,18 @@ export class OrdersService {
   getAllOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.url + '/getall');
   }
-  getOrderById(OrderId : number): Observable<Order> {
-    return this.http.get<Order>(this.url + '/getsinglebyid/' + OrderId);
+  getOrderById(OrderId : any): Observable<Orderdetail[]> {
+    return this.http.get<Orderdetail[]>(this.url + '/getorderdetailbyid/' + OrderId);
   }
   createOrder(data : any): Observable<Order> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
     return this.http.post<Order>(this.url + '/add',
     data, httpOptions);
+  }
+  updateStatus(order : Order): Observable<Order> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
+    return this.http.put<Order>(this.url + '/updatestatus',
+    order, httpOptions);
   }
   updateOrder(order : Order): Observable<Order> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };

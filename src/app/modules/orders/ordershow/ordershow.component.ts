@@ -13,7 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class OrdershowComponent implements OnInit {
 
   ELEMENT_DATA : Order[];
-  displayedColumns: string[] = ['ID', 'CustomerName', 'CustomerAddress', 'CustomerEmail','CustomerMobile','Action'];
+  displayedColumns: string[] = ['ID', 'CustomerName', 'CustomerAddress', 'CustomerEmail','CustomerMobile','Status','Action'];
   dataSource = new MatTableDataSource<Order>(this.ELEMENT_DATA);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   //PostCategory: any = [];

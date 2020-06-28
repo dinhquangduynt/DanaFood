@@ -14,6 +14,7 @@ export class OrdereditComponent implements OnInit {
 
   editCate : FormGroup;
   currentPostCate : Order;
+  checkboxFlag : boolean;
   constructor(private cateService: OrdersService,
     private route: ActivatedRoute,
     private router: Router ,
@@ -32,6 +33,7 @@ export class OrdereditComponent implements OnInit {
       CustomerEmail : [''],
       CustomerMobile : [''],
       PaymentMethod : [''],
+      Status: this.checkboxFlag
     })
   }
    uploadFile(event) {
@@ -46,6 +48,13 @@ export class OrdereditComponent implements OnInit {
       (error: HttpErrorResponse) => {
         console.log(error.error);
       }
+      this.cateService.updateStatus(this.editCate.value).subscribe((data: any) => {
+        this.checkboxFlag = data;
+        this.router.navigateByUrl('orders');
+      });
+    (error: HttpErrorResponse) => {
+      console.log(error.error);
+    }
   }
   getProfile() {
     const id = this.route.snapshot.paramMap.get('id');

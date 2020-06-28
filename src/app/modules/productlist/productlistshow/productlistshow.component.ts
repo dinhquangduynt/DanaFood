@@ -40,7 +40,7 @@ export class ProductlistshowComponent implements OnInit {
   public loadPosts() {
     const id = this.route.snapshot.paramMap.get('id');
     //this.service.send(id);
-    localStorage.setItem("CateID", id);
+    localStorage.setItem("CateId", id);
     let productcate = this.postCate.getAllProductByCategory(id);
     productcate.subscribe(postCateItem => this.dataSource.data = postCateItem as ProductItem[]);
   }

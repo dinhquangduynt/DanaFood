@@ -16,25 +16,23 @@
       </select> -->
 
       <label for="url_image">Customer Email</label>
-      <input type="text" id="url" name="Url" formControlName = "CustomerEmail" placeholder="Ex: https://danafoodapp.com/abc.jpg">
+      <input type="text" id="url" name="Url" formControlName = "CustomerEmail">
 
       <input type="file" id="myFile" name="filename" (change)="uploadFile($event)">
 
       <label for="url_image">Customer Mobile</label>
-      <input type="text" id="url" name="Url" formControlName = "CustomerMobile" placeholder="Ex: https://danafoodapp.com/abc.jpg">
+      <input type="text" id="url" name="Url" formControlName = "CustomerMobile">
 
       <label for="url_image">Payment Method</label>
-      <input type="text" id="url" name="Url" formControlName = "PaymentMethod" placeholder="Ex: https://danafoodapp.com/abc.jpg">
+      <input type="text" id="url" name="Url" formControlName = "PaymentMethod" >
 
+      <label for="url_image">Status</label>
+      <input [(ngModel)]="checkboxFlag" type="checkbox"/>
 
       <!-- <div class="checked">
         <label for="myCheck">HomeFlag:</label>
         <input type="checkbox" id="myCheck" onclick="myFunction()">
       </div> -->
-       <div class="checked">
-        <label for="myCheck">Status:</label>
-        <input type="checkbox" id="myCheck" onclick="myFunction()">
-      </div>
 
       <input type="submit" value="Submit">
     </form>

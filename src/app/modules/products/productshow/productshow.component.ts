@@ -15,7 +15,7 @@ import { from } from 'rxjs';
 export class ProductshowComponent implements OnInit {
 
   ELEMENT_DATA : ProductCategory[];
-  displayedColumns: string[] = ['ID', 'ProductCategoryName', 'CreatedDate', 'CreatedBy','Alias', 'Action'];
+  displayedColumns: string[] = ['ID', 'ProductCategoryName','Alias', 'Action'];
   dataSource = new MatTableDataSource<ProductCategory>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort) sort: MatSort;

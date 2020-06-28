@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     .subscribe((data: any) => {
 
       localStorage.setItem('token', data.access_token);
-      //localStorage.setItem('UserName', data.UserName);
+      localStorage.setItem('UserName', data.UserName);
       localStorage.setItem('FullName' , data.FullName);
       localStorage.setItem('PhoneNumber', data.PhoneNumber);
       //localStorage.setItem('BirthDay', data.BirthDay);

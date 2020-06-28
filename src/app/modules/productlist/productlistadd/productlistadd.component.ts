@@ -13,7 +13,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class ProductlistaddComponent implements OnInit {
 
-  addpost : FormGroup;
+  addproduct : FormGroup;
   private cateID : any;
   subscription: Subscription;
   constructor(
@@ -26,9 +26,9 @@ export class ProductlistaddComponent implements OnInit {
     // this.subscription =  shared.subj$.subscribe(val=>{
     //   this.cateID = val;
     //     })
-    this.cateID = localStorage.getItem("CateID");
+    this.cateID = localStorage.getItem("CateId");
 
-    this.addpost = this.fb.group({
+    this.addproduct = this.fb.group({
       Name: [''],
       Alias: [''],
       Image: [''],
@@ -43,7 +43,7 @@ export class ProductlistaddComponent implements OnInit {
   imageUrl: string;
 
   ngOnInit(): void {
-    localStorage.removeItem("CateID");
+    localStorage.removeItem("CateId");
   }
   uploadFile(event) {
     const FILE = (event.target as HTMLInputElement).files[0];
@@ -57,7 +57,7 @@ export class ProductlistaddComponent implements OnInit {
   //    this.postcateservice.upload(imageForm).subscribe(
   //     (response: any) => {
   //       this.editCate.value.logo = response.data._id;
-        this.postcateservice.createProduct(this.addpost.value).subscribe((data: any) => {
+        this.postcateservice.createProduct(this.addproduct.value).subscribe((data: any) => {
           this.router.navigateByUrl('products');
           console.log("ádfas");
       (error: HttpErrorResponse) => {

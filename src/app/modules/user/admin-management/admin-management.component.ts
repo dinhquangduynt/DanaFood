@@ -27,12 +27,13 @@ export class AdminManagementComponent implements OnInit {
   ngOnInit(): void {
     //this.date = localStorage.getItem('BirthDay');
     //this.ad.BirthDay = new Date(this.date);
+    //this.ad.UserName = localStorage.getItem('UserName');
     this.ad.FullName = localStorage.getItem('FullName');
     this.ad.Address = localStorage.getItem('Address');
     this.ad.PhoneNumber = localStorage.getItem('PhoneNumber');
     this.getProfile();
     this.admin = this.fb.group({
-     // UserName: [''],
+      UserName: [''],
       FullName: [''],
       //Birthday: [''],
       PhoneNumber: [''],
@@ -44,11 +45,6 @@ export class AdminManagementComponent implements OnInit {
       NewPass :[''],
       RepeatNew : ['']
     })
-    //localStorage.removeItem("UserName");
-    localStorage.removeItem("FullName");
-    //localStorage.removeItem("Birthday");
-    localStorage.removeItem("PhoneNumber");
-    localStorage.removeItem("Address");
 
   }
   onSubmit(){
@@ -58,6 +54,11 @@ export class AdminManagementComponent implements OnInit {
   (error: HttpErrorResponse) => {
     console.log(error.error);
   }
+    localStorage.removeItem("UserName");
+    localStorage.removeItem("FullName");
+    //localStorage.removeItem("Birthday");
+    localStorage.removeItem("PhoneNumber");
+    localStorage.removeItem("Address");
   }
   onChange(){
 
@@ -65,7 +66,7 @@ export class AdminManagementComponent implements OnInit {
   getProfile() {
     //this.ad.UserName = localStorage.getItem('UserName');
       this.admin = this.fb.group({
-        //UserName: [this.ad.UserName],
+        UserName: [this.ad.UserName],
         FullName: [this.ad.FullName],
         //Birthday: [this.ad.BirthDay.toDateString],
         Address: [this.ad.Address],

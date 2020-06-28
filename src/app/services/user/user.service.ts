@@ -17,26 +17,22 @@ export class UserService {
   getUserById(UserId : number): Observable<User> {
     return this.http.get<User>(this.url + '/getsinglebyid/' + UserId);
   }
-  createUser(data : any): Observable<User> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
-    return this.http.post<User>(this.url + '/add',
-    data, httpOptions);
-  }
-  updateUser(User : User): Observable<User> {
+  // createUser(data : any): Observable<User> {
+  //   const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
+  //   return this.http.post<User>(this.url + '/add',
+  //   data, httpOptions);
+  // }
+  updateUser(data : any): Observable<User> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
     return this.http.put<User>(this.url + '/update',
-    User, httpOptions);
+    data, httpOptions);
   }
-  deleteUserById(UserId : number) {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
-    return this.http.delete<number>(this.url + '/delete/' + UserId, httpOptions);
-  }
-  getDetail(UserId : any){
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
-    return this.http.get<any>(this.url + '/getbyid/' + UserId, httpOptions);
-  }
-  private _listners = new Subject<any>();
-  filter(filterBy: string){
-    this._listners.next(filterBy);
-  }
+  // getDetail(UserId : any){
+  //   const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
+  //   return this.http.get<any>(this.url + '/getbyid/' + UserId, httpOptions);
+  // }
+  // private _listners = new Subject<any>();
+  // filter(filterBy: string){
+  //   this._listners.next(filterBy);
+  // }
 }

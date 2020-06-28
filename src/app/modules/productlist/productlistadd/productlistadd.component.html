@@ -1,7 +1,7 @@
 <h3>Create Product</h3>
 
   <div class="container">
-    <form [formGroup] = "addpost" (ngSubmit)="onSubmit()">
+    <form [formGroup] = "addproduct" (ngSubmit)="onSubmit()">
 
       <label for="pname">Product Name</label>
       <input type="text" id="pname" name="Name" formControlName = "Name">
@@ -20,7 +20,7 @@
       <label for="url_image">Url Image</label>
       <input type="text" id="url" name="Url" formControlName = "Image" placeholder="Ex: https://danafoodapp.com/abc.jpg">
 
-      <input type="file" id="myFile" name="filename" (change)="uploadFile($event)">
+      <!-- <input type="file" id="myFile" name="filename" (change)="uploadFile($event)"> -->
 
       <label for="description">Description</label>
       <textarea id="description" name="description" formControlName = "Description" placeholder="Write something.." style="height:200px"></textarea>
