@@ -42,12 +42,12 @@ export class OrdereditComponent implements OnInit {
   }
 
   onSubmit(){
-        this.cateService.updateOrder(this.editCate.value).subscribe((data: any) => {
-          this.router.navigateByUrl('orders');
-        });
-      (error: HttpErrorResponse) => {
-        console.log(error.error);
-      }
+      //   this.cateService.updateOrder(this.editCate.value).subscribe((data: any) => {
+      //     this.router.navigateByUrl('orders');
+      //   });
+      // (error: HttpErrorResponse) => {
+      //   console.log(error.error);
+      // }
       this.cateService.updateStatus(this.editCate.value).subscribe((data: any) => {
         this.checkboxFlag = data;
         this.router.navigateByUrl('orders');
