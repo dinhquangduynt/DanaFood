@@ -140,7 +140,7 @@ namespace WebAPI.Infrastructure.Extensions
             appUser.BirthDay = appUserViewModel.BirthDay;
             // appUser.UserName = appUserViewModel.Email;
             //Byte[] buffer = System.Text.Encoding.ASCII.GetBytes(appUserViewModel.Password);
-            //appUser.PasswordHash = MD5.Create().ComputeHash(buffer).ToString();
+            //appUser.PasswordHash = appUser.PasswordHash;
             appUser.PhoneNumber = appUserViewModel.PhoneNumber;
             appUser.Address = appUserViewModel.Address;
         }

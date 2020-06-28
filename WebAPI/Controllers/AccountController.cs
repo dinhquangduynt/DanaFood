@@ -72,16 +72,16 @@ namespace WebAPI.Controllers
 
             if (result.Succeeded)
             {
-                if (string.IsNullOrEmpty(model.Role))
-                {
-                    model.Role = "Customer";
-                }
-                else
-                {
-                    model.Role = "Administrator";
-                }
+                //if (string.IsNullOrEmpty(model.Role))
+                //{
+                //    model.Role = "Customer";
+                //}
+                //else
+                //{
+                //    model.Role = "Administrator";
+                //}
 
-                await UserManager.AddToRoleAsync(user.Id, model.Role);
+                await UserManager.AddToRoleAsync(user.Id, "Customer");
 
                 response = request.CreateResponse(HttpStatusCode.Created, user);
             }
@@ -249,6 +249,7 @@ namespace WebAPI.Controllers
                // user.PasswordHash = UserManager.PasswordHasher.HashPassword(userViewModel.Password);
 
                 var result = UserManager.Update(user);
+                userViewModel.Password = user.PasswordHash;
                 response = request.CreateResponse(HttpStatusCode.OK, userViewModel);
             }
             catch (Exception ex)
@@ -282,7 +283,7 @@ namespace WebAPI.Controllers
                     BirthDay = (DateTime)user.BirthDay,
                     Address = user.Address,
                     PhoneNumber = user.PhoneNumber,
-                    Email = user.PhoneNumber,
+                    Email = user.UserName,
                     Password = user.PasswordHash,
                 };
                 response = request.CreateResponse(HttpStatusCode.OK, userViewModel);

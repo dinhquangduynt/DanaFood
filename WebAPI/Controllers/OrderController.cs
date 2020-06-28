@@ -108,6 +108,7 @@ namespace WebAPI.Controllers
             try
             {
                 _orderService.UpdateStatus(order.ID);
+                _orderService.Save();
                 response = Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
